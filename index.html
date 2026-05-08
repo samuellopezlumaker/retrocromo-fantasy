@@ -6,748 +6,805 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#0a0a1a;--panel:#12122a;--card:#1a1a35;--border:#2a2a5a;
-  --gold:#f5c842;--gold2:#e8a800;--silver:#c0c0d0;--bronze:#cd7f32;
-  --red:#e63946;--blue:#4361ee;--green:#2dc653;--cyan:#06d6a0;
-  --text:#e8e8f0;--muted:#888899;--white:#fff;
+  --bg:#0b0b1f;--panel:#13132e;--card:#1c1c3e;--border:#2e2e6a;
+  --gold:#f7d04b;--gold2:#e0b800;--silver:#c8c8dc;--bronze:#cd7f32;
+  --red:#e63946;--green:#2dc653;--cyan:#06d6a0;
+  --text:#eeeef8;--muted:#7777aa;--white:#fff;
 }
 body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;overflow-x:hidden}
 
-.header{background:linear-gradient(135deg,#0d0d2b,#1a1a4a);border-bottom:2px solid var(--gold);padding:0}
-.header-top{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;flex-wrap:wrap;gap:8px}
-.logo{font-size:22px;font-weight:900;letter-spacing:3px;color:var(--gold);text-shadow:0 0 20px rgba(245,200,66,0.4)}
-.logo span{color:var(--silver);font-size:13px;font-weight:400;letter-spacing:1px;display:block}
-.budget-bar{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
-.stat-pill{background:rgba(245,200,66,0.1);border:1px solid rgba(245,200,66,0.3);border-radius:20px;padding:4px 12px;font-size:12px;color:var(--gold);font-weight:700}
-.nav{display:flex;background:#0d0d2b;border-bottom:1px solid var(--border)}
-.nav-btn{flex:1;padding:10px 6px;background:none;border:none;border-bottom:3px solid transparent;color:var(--muted);font-size:12px;font-weight:700;letter-spacing:1px;cursor:pointer;text-transform:uppercase;transition:all .2s}
+/* ── HEADER ── */
+.hdr{background:linear-gradient(135deg,#080820 0%,#1a1a50 100%);border-bottom:3px solid var(--gold);position:sticky;top:0;z-index:100}
+.hdr-top{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;flex-wrap:wrap;gap:8px}
+.logo-wrap{display:flex;align-items:center;gap:10px}
+.logo-ball{font-size:28px;filter:drop-shadow(0 0 8px var(--gold))}
+.logo-text{font-size:20px;font-weight:900;letter-spacing:3px;color:var(--gold);text-shadow:0 0 20px rgba(247,208,75,.5);line-height:1}
+.logo-sub{font-size:10px;color:var(--silver);letter-spacing:2px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.pill{background:rgba(247,208,75,.1);border:1px solid rgba(247,208,75,.3);border-radius:20px;padding:4px 12px;font-size:11px;color:var(--gold);font-weight:700;white-space:nowrap}
+.btn-salir{background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:20px;padding:4px 12px;font-size:11px;color:var(--muted);cursor:pointer}
+.btn-salir:hover{color:var(--red);border-color:var(--red)}
+.nav{display:flex;background:rgba(0,0,0,.3)}
+.nav-btn{flex:1;padding:10px 4px;background:none;border:none;border-bottom:3px solid transparent;color:var(--muted);font-size:11px;font-weight:700;cursor:pointer;text-transform:uppercase;letter-spacing:1px;transition:all .2s}
 .nav-btn:hover{color:var(--text)}
-.nav-btn.on{color:var(--gold);border-bottom-color:var(--gold)}
+.nav-btn.on{color:var(--gold);border-bottom-color:var(--gold);background:rgba(247,208,75,.05)}
 
-.sec{display:none;padding:12px;max-width:960px;margin:0 auto}
+/* ── SECCIONES ── */
+.sec{display:none;padding:14px;max-width:1000px;margin:0 auto}
 .sec.on{display:block}
-.sec-title{font-size:18px;font-weight:900;letter-spacing:2px;color:var(--gold);margin-bottom:4px;text-transform:uppercase}
-.sec-sub{font-size:12px;color:var(--muted);margin-bottom:14px}
+.sec-hdr{margin-bottom:14px}
+.sec-title{font-size:20px;font-weight:900;letter-spacing:2px;color:var(--gold);text-transform:uppercase}
+.sec-sub{font-size:12px;color:var(--muted);margin-top:2px}
 
-/* LOGIN */
-.login-wrap{min-height:70vh;display:flex;align-items:center;justify-content:center}
-.login-box{background:var(--panel);border:2px solid var(--gold);border-radius:16px;padding:32px;max-width:360px;width:100%;text-align:center}
-.login-title{font-size:22px;font-weight:900;color:var(--gold);letter-spacing:3px;margin-bottom:8px}
-.login-sub{font-size:12px;color:var(--muted);margin-bottom:24px}
-.login-input{width:100%;background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:14px;color:var(--text);outline:none;margin-bottom:12px}
+/* ── LOGIN ── */
+.login-page{min-height:100vh;display:flex;flex-direction:column}
+.login-hero{background:linear-gradient(160deg,#080820,#1a1a50,#0d2b0d);flex:1;display:flex;align-items:center;justify-content:center;padding:20px;position:relative;overflow:hidden}
+.login-hero::before{content:'⚽';position:absolute;font-size:300px;opacity:.03;top:-60px;right:-60px}
+.login-box{background:rgba(19,19,46,.95);border:2px solid var(--gold);border-radius:20px;padding:36px 28px;max-width:380px;width:100%;text-align:center;box-shadow:0 0 60px rgba(247,208,75,.15)}
+.login-logo{font-size:32px;font-weight:900;letter-spacing:4px;color:var(--gold);text-shadow:0 0 30px rgba(247,208,75,.5)}
+.login-logo-sub{font-size:12px;color:var(--silver);letter-spacing:3px;margin-bottom:6px}
+.login-season{display:inline-block;background:rgba(247,208,75,.15);border:1px solid rgba(247,208,75,.4);border-radius:20px;padding:3px 14px;font-size:11px;color:var(--gold);font-weight:700;letter-spacing:2px;margin-bottom:24px}
+.login-label{font-size:11px;color:var(--muted);letter-spacing:2px;text-align:left;margin-bottom:6px;text-transform:uppercase}
+.login-input{width:100%;background:rgba(255,255,255,.06);border:1.5px solid var(--border);border-radius:10px;padding:12px 16px;font-size:15px;color:var(--text);outline:none;margin-bottom:14px;transition:border .2s}
 .login-input:focus{border-color:var(--gold)}
-.login-btn{width:100%;background:var(--gold);color:#000;border:none;border-radius:8px;padding:11px;font-size:14px;font-weight:900;letter-spacing:1px;cursor:pointer;text-transform:uppercase}
-.login-btn:hover{background:var(--gold2)}
-.login-error{color:var(--red);font-size:12px;margin-top:8px}
+.login-btn{width:100%;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;border:none;border-radius:10px;padding:13px;font-size:14px;font-weight:900;letter-spacing:2px;cursor:pointer;text-transform:uppercase;transition:all .2s;box-shadow:0 4px 20px rgba(247,208,75,.3)}
+.login-btn:hover{transform:translateY(-1px);box-shadow:0 6px 28px rgba(247,208,75,.4)}
+.login-err{color:var(--red);font-size:12px;margin-top:8px}
+.login-deco{display:flex;justify-content:center;gap:12px;margin-top:20px;font-size:22px;opacity:.4}
 
-/* CROMOS */
-.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-top:8px}
-.cromo{border-radius:10px;border:2px solid var(--border);background:var(--card);cursor:pointer;transition:transform .15s,border-color .15s;position:relative;overflow:hidden;user-select:none}
-.cromo:hover{transform:scale(1.04);border-color:var(--gold)}
-.cromo.selected{border-color:var(--gold);box-shadow:0 0 12px rgba(245,200,66,0.4)}
-.cromo.disabled{opacity:.45;cursor:default;filter:grayscale(.5)}
-.cromo.disabled:hover{transform:none;border-color:var(--border)}
-.cromo-header{padding:6px 8px 4px;display:flex;align-items:center;justify-content:space-between}
-.cromo-pos{font-size:9px;font-weight:900;letter-spacing:1px;padding:2px 6px;border-radius:4px;text-transform:uppercase}
-.pos-POR{background:rgba(230,57,70,.2);color:#e63946}
-.pos-DEF{background:rgba(67,97,238,.2);color:#4361ee}
-.pos-MED{background:rgba(6,214,160,.2);color:#06d6a0}
-.pos-DEL{background:rgba(245,200,66,.2);color:var(--gold)}
-.cromo-num{font-size:20px;font-weight:900;color:var(--gold);opacity:.15;line-height:1}
-.cromo-body{padding:4px 8px 8px;text-align:center}
-.cromo-name{font-size:11px;font-weight:700;color:var(--white);line-height:1.2;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.cromo-team{font-size:9px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:4px}
-.cromo-price{font-size:14px;font-weight:900;color:var(--gold)}
-.cromo-price span{font-size:9px;color:var(--muted)}
-.cromo-pts{font-size:10px;color:var(--cyan);font-weight:700}
-.cromo-stripe{height:3px;width:100%;position:absolute;bottom:0;left:0}
-.cromo-check{position:absolute;top:4px;right:4px;background:var(--gold);color:#000;border-radius:50%;width:16px;height:16px;font-size:10px;display:none;align-items:center;justify-content:center;font-weight:900}
-.cromo.selected .cromo-check{display:flex}
-
-.filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
-.f-btn{background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:20px;padding:4px 12px;font-size:11px;font-weight:700;color:var(--muted);cursor:pointer;transition:all .2s;text-transform:uppercase;letter-spacing:1px}
+/* ── FILTROS ── */
+.filters-bar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;align-items:center}
+.f-btn{background:rgba(255,255,255,.05);border:1.5px solid var(--border);border-radius:20px;padding:5px 14px;font-size:11px;font-weight:700;color:var(--muted);cursor:pointer;transition:all .2s;text-transform:uppercase;letter-spacing:1px}
 .f-btn:hover{color:var(--text);border-color:var(--muted)}
-.f-btn.on{background:rgba(245,200,66,.15);border-color:var(--gold);color:var(--gold)}
-.search-input{background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:20px;padding:5px 14px;font-size:12px;color:var(--text);outline:none;width:180px}
-.search-input::placeholder{color:var(--muted)}
-.search-input:focus{border-color:var(--gold)}
+.f-btn.on{background:rgba(247,208,75,.15);border-color:var(--gold);color:var(--gold)}
+.f-btn.pos-POR.on{background:rgba(230,57,70,.15);border-color:#e63946;color:#e63946}
+.f-btn.pos-DEF.on{background:rgba(67,97,238,.15);border-color:#4361ee;color:#4361ee}
+.f-btn.pos-MED.on{background:rgba(6,214,160,.15);border-color:#06d6a0;color:#06d6a0}
+.f-btn.pos-DEL.on{background:rgba(247,208,75,.15);border-color:var(--gold);color:var(--gold)}
+.search-box{background:rgba(255,255,255,.05);border:1.5px solid var(--border);border-radius:20px;padding:5px 16px;font-size:12px;color:var(--text);outline:none;width:190px;margin-left:auto}
+.search-box:focus{border-color:var(--gold)}
+.search-box::placeholder{color:var(--muted)}
 
-/* CAMPO */
-.campo{background:linear-gradient(180deg,#0d2b0d,#1a4a1a);border:2px solid rgba(255,255,255,.1);border-radius:12px;padding:14px;margin-bottom:12px;position:relative;overflow:hidden}
-.campo::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(255,255,255,.04) 59px,rgba(255,255,255,.04) 60px),repeating-linear-gradient(90deg,transparent,transparent 59px,rgba(255,255,255,.04) 59px,rgba(255,255,255,.04) 60px)}
-.linea-pos{margin-bottom:12px;position:relative;z-index:1}
-.linea-label{text-align:center;font-size:9px;letter-spacing:3px;color:rgba(255,255,255,.35);text-transform:uppercase;margin-bottom:6px}
+/* ── CROMOS PANINI ── */
+.grid-cromos{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:14px;margin-top:4px}
+
+.cromo-panini{border-radius:12px;overflow:hidden;cursor:pointer;transition:transform .18s,box-shadow .18s;position:relative;user-select:none;background:#111}
+.cromo-panini:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 12px 32px rgba(0,0,0,.5)}
+.cromo-panini.sel{box-shadow:0 0 0 3px var(--gold),0 12px 32px rgba(247,208,75,.3)}
+.cromo-panini.dis{opacity:.4;cursor:default;filter:grayscale(.6)}
+.cromo-panini.dis:hover{transform:none;box-shadow:none}
+
+/* Banda superior del cromo */
+.cromo-top{height:28px;display:flex;align-items:center;justify-content:space-between;padding:0 8px;position:relative}
+.cromo-pos-tag{font-size:9px;font-weight:900;letter-spacing:1px;padding:2px 7px;border-radius:4px;text-transform:uppercase}
+.pos-POR .cromo-pos-tag{background:rgba(230,57,70,.85);color:#fff}
+.pos-DEF .cromo-pos-tag{background:rgba(67,97,238,.85);color:#fff}
+.pos-MED .cromo-pos-tag{background:rgba(6,214,160,.85);color:#000}
+.pos-DEL .cromo-pos-tag{background:rgba(247,208,75,.9);color:#000}
+.cromo-flag{font-size:16px;line-height:1}
+.cromo-check-badge{position:absolute;top:5px;left:50%;transform:translateX(-50%);background:var(--gold);color:#000;border-radius:50%;width:20px;height:20px;font-size:11px;display:none;align-items:center;justify-content:center;font-weight:900;z-index:2}
+.cromo-panini.sel .cromo-check-badge{display:flex}
+
+/* Foto del jugador */
+.cromo-foto{height:110px;display:flex;align-items:flex-end;justify-content:center;position:relative;overflow:hidden}
+.cromo-foto-bg{position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.7) 100%)}
+.cromo-foto img{height:100%;width:100%;object-fit:cover;object-position:center top}
+.cromo-foto-silhouette{width:70px;height:100px;position:relative;display:flex;align-items:flex-end;justify-content:center}
+.silhouette-svg{opacity:.55;filter:drop-shadow(0 2px 6px rgba(0,0,0,.5))}
+
+/* Franja de color del equipo */
+.cromo-stripe{height:4px;width:100%}
+
+/* Info inferior */
+.cromo-info{padding:6px 8px 8px;background:linear-gradient(180deg,#0e0e2a,#080818)}
+.cromo-nombre{font-size:11px;font-weight:900;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:.5px}
+.cromo-equipo{font-size:9px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:4px}
+.cromo-bottom{display:flex;justify-content:space-between;align-items:center}
+.cromo-precio{font-size:13px;font-weight:900;color:var(--gold)}
+.cromo-precio span{font-size:8px;color:var(--muted)}
+.cromo-pts-badge{font-size:9px;font-weight:700;color:var(--cyan);background:rgba(6,214,160,.12);border-radius:8px;padding:1px 5px}
+
+/* ── CAMPO ── */
+.campo-wrap{background:linear-gradient(180deg,#0a260a,#0d360d,#0a260a);border-radius:16px;padding:16px;margin-bottom:12px;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.08)}
+.campo-wrap::before{content:'';position:absolute;inset:0;
+  background:
+    linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+  background-size:40px 40px}
+.campo-wrap::after{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:rgba(255,255,255,.06);transform:translateX(-50%)}
+.linea-campo{margin-bottom:14px;position:relative;z-index:1}
+.linea-lbl{text-align:center;font-size:9px;letter-spacing:3px;color:rgba(255,255,255,.3);text-transform:uppercase;margin-bottom:8px;font-weight:700}
 .linea-slots{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
-.slot-campo{min-width:78px;max-width:90px;background:rgba(0,0,0,.4);border:1.5px dashed rgba(255,255,255,.15);border-radius:8px;padding:6px 4px;text-align:center;cursor:pointer;transition:all .2s}
-.slot-campo.lleno{border-style:solid;border-color:rgba(245,200,66,.3);background:rgba(0,0,0,.55)}
-.slot-campo.lleno:hover{border-color:var(--red);background:rgba(230,57,70,.1)}
-.slot-campo .sc-name{font-size:10px;font-weight:700;color:var(--white);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.slot-campo .sc-pts{font-size:16px;font-weight:900;color:var(--gold);line-height:1}
-.slot-campo .sc-team{font-size:8px;color:var(--muted)}
-.slot-vacio-txt{font-size:9px;color:rgba(255,255,255,.2);letter-spacing:1px}
+.slot{min-width:76px;max-width:88px;background:rgba(0,0,0,.5);border:1.5px dashed rgba(255,255,255,.12);border-radius:10px;padding:6px 4px;text-align:center;transition:all .2s;cursor:default}
+.slot.ocp{border-style:solid;border-color:rgba(247,208,75,.35);background:rgba(0,0,0,.65);cursor:pointer}
+.slot.ocp:hover{border-color:var(--red);background:rgba(230,57,70,.12)}
+.slot-foto{width:44px;height:52px;margin:0 auto 3px;border-radius:6px;overflow:hidden;position:relative;background:rgba(255,255,255,.05)}
+.slot-foto img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.slot-nombre{font-size:9px;font-weight:700;color:var(--white);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.slot-pts{font-size:15px;font-weight:900;color:var(--gold);line-height:1;display:block}
+.slot-eq{font-size:8px;color:var(--muted)}
+.slot-vacio{font-size:9px;color:rgba(255,255,255,.15);letter-spacing:1px;padding:14px 0}
 
-/* RANKING */
-.ranking-list{display:flex;flex-direction:column;gap:6px}
-.rank-row{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px}
-.rank-pos{font-size:20px;font-weight:900;width:28px;text-align:center}
-.rank-pos.p1{color:var(--gold)}.rank-pos.p2{color:var(--silver)}.rank-pos.p3{color:var(--bronze)}
-.rank-name{flex:1;font-weight:700;font-size:14px}
-.rank-team{font-size:11px;color:var(--muted)}
-.rank-pts{font-size:20px;font-weight:900;color:var(--cyan)}
+/* Stats bar */
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px;text-align:center}
+.stat-lbl{font-size:10px;color:var(--muted);letter-spacing:1px;margin-bottom:4px;text-transform:uppercase}
+.stat-val{font-size:22px;font-weight:900}
+.stat-val.gold{color:var(--gold)}.stat-val.cyan{color:var(--cyan)}.stat-val.green{color:var(--green)}
+
+/* ── CLASIFICACIÓN ── */
+.rank-list{display:flex;flex-direction:column;gap:6px}
+.rank-row{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 16px;transition:border .2s}
+.rank-row.mine{border-color:var(--gold);background:rgba(247,208,75,.06)}
+.rank-num{font-size:22px;font-weight:900;width:30px;text-align:center}
+.rank-num.p1{color:var(--gold)}.rank-num.p2{color:var(--silver)}.rank-num.p3{color:var(--bronze)}
+.rank-info{flex:1}
+.rank-name{font-weight:800;font-size:14px}
+.rank-sub{font-size:11px;color:var(--muted)}
+.rank-pts{font-size:22px;font-weight:900;color:var(--cyan)}
 .rank-pts span{font-size:11px;color:var(--muted)}
-.rank-row.mine{border-color:var(--gold);background:rgba(245,200,66,.07)}
+.rank-medal{font-size:20px}
 
-/* ADMIN */
-.admin-panel{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:14px}
-.admin-title{font-size:13px;font-weight:900;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;border-bottom:1px solid var(--border);padding-bottom:8px}
-.jornadas-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:6px;margin-bottom:12px}
-.jornada-btn{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:6px;padding:6px;text-align:center;font-size:11px;font-weight:700;color:var(--muted)}
-.jornada-btn.jugada{background:rgba(6,214,160,.08);border-color:rgba(6,214,160,.3);color:var(--cyan)}
-.jornada-btn.siguiente{background:rgba(245,200,66,.15);border-color:var(--gold);color:var(--gold)}
-.simular-btn{background:var(--gold);color:#000;border:none;border-radius:8px;padding:10px 24px;font-size:13px;font-weight:900;letter-spacing:1px;cursor:pointer;text-transform:uppercase;width:100%;transition:all .2s}
-.simular-btn:hover{background:var(--gold2)}
-.simular-btn:disabled{opacity:.4;cursor:default}
-.resultado-match{display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:rgba(255,255,255,.03);border-radius:6px;margin-bottom:4px;font-size:12px}
-.score-box{font-weight:900;font-size:14px;color:var(--white);background:rgba(0,0,0,.4);padding:2px 8px;border-radius:4px;min-width:40px;text-align:center}
-.team-name-match{flex:1;padding:0 8px;color:var(--muted);font-size:11px}
-.team-name-match.home{text-align:right}
+/* ── ADMIN ── */
+.admin-card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:14px}
+.admin-card-title{font-size:12px;font-weight:900;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.jornadas-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:6px;margin-bottom:14px}
+.j-btn{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:8px;padding:7px 4px;text-align:center;font-size:11px;font-weight:700;color:var(--muted)}
+.j-btn.done{background:rgba(6,214,160,.07);border-color:rgba(6,214,160,.3);color:var(--cyan)}
+.j-btn.next{background:rgba(247,208,75,.12);border-color:var(--gold);color:var(--gold)}
+.sim-btn{width:100%;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;border:none;border-radius:10px;padding:13px;font-size:14px;font-weight:900;letter-spacing:2px;cursor:pointer;text-transform:uppercase;box-shadow:0 4px 20px rgba(247,208,75,.25);transition:all .2s}
+.sim-btn:hover{transform:translateY(-1px);box-shadow:0 8px 28px rgba(247,208,75,.35)}
+.sim-btn:disabled{opacity:.35;cursor:default;transform:none}
+.match-row{display:flex;align-items:center;justify-content:space-between;padding:7px 10px;background:rgba(255,255,255,.03);border-radius:8px;margin-bottom:4px}
+.match-team{flex:1;font-size:11px;color:var(--muted)}
+.match-team.h{text-align:right;padding-right:8px}
+.match-team.a{padding-left:8px}
+.match-score{background:rgba(0,0,0,.5);border-radius:6px;padding:3px 10px;font-weight:900;font-size:13px;color:var(--white);min-width:44px;text-align:center}
 
-/* LOADING */
-.loading{text-align:center;padding:40px;color:var(--muted);font-size:13px;letter-spacing:2px}
-.spinner{width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px}
+/* ── MODAL ── */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:900;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+.overlay.on{display:flex}
+.modal{background:var(--panel);border:2px solid var(--gold);border-radius:20px;padding:24px;max-width:480px;width:92%;max-height:82vh;overflow-y:auto;box-shadow:0 0 60px rgba(247,208,75,.15)}
+.modal-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.modal-title{font-size:15px;font-weight:900;color:var(--gold);letter-spacing:2px;text-transform:uppercase}
+.modal-close{background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;line-height:1}
+.modal-close:hover{color:var(--red)}
+.pts-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.pts-nombre{font-weight:700;font-size:12px}
+.pts-eq{font-size:10px;color:var(--muted)}
+.pts-val{font-size:20px;font-weight:900;color:var(--gold)}
+.pts-total{text-align:center;padding-top:14px;font-size:30px;font-weight:900;color:var(--cyan)}
+.pts-total span{font-size:13px;color:var(--muted);display:block}
+
+/* ── LOADING ── */
+.spinner-wrap{text-align:center;padding:40px;color:var(--muted);font-size:12px;letter-spacing:2px}
+.spinner{width:34px;height:34px;border:3px solid var(--border);border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* MODAL */
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:900;display:none;align-items:center;justify-content:center}
-.modal-overlay.on{display:flex}
-.modal{background:var(--panel);border:2px solid var(--gold);border-radius:16px;padding:20px;max-width:500px;width:90%;max-height:80vh;overflow-y:auto}
-.modal-title{font-size:16px;font-weight:900;color:var(--gold);letter-spacing:2px;margin-bottom:12px;text-align:center;text-transform:uppercase}
-.modal-close{float:right;background:none;border:none;color:var(--muted);font-size:18px;cursor:pointer;line-height:1}
-.puntos-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:12px}
-.puntos-nombre{font-weight:700;color:var(--white)}
-.puntos-equipo{color:var(--muted);font-size:10px}
-.puntos-val{font-size:18px;font-weight:900;color:var(--gold)}
-.total-jornada{text-align:center;margin-top:12px;font-size:28px;font-weight:900;color:var(--cyan)}
+/* ── TOAST ── */
+#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;padding:9px 22px;border-radius:20px;font-weight:800;font-size:13px;display:none;z-index:999;white-space:nowrap;box-shadow:0 4px 20px rgba(247,208,75,.4)}
 
-#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--gold);color:#000;padding:8px 20px;border-radius:20px;font-weight:700;font-size:13px;display:none;z-index:999;white-space:nowrap}
-::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-track{background:var(--bg)}
 ::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
 </style>
 </head>
 <body>
-
 <div id="toast"></div>
 
-<div class="modal-overlay" id="modal-jornada">
+<!-- MODAL JORNADA -->
+<div class="overlay" id="modal-ovl">
   <div class="modal">
-    <button class="modal-close" onclick="document.getElementById('modal-jornada').classList.remove('on')">✕</button>
-    <div class="modal-title" id="modal-titulo"></div>
+    <div class="modal-hdr">
+      <div class="modal-title" id="modal-title">Jornada</div>
+      <button class="modal-close" onclick="document.getElementById('modal-ovl').classList.remove('on')">✕</button>
+    </div>
     <div id="modal-body"></div>
-    <div class="total-jornada" id="modal-total"></div>
-    <div style="text-align:center;margin-top:12px">
-      <button class="simular-btn" style="width:auto;padding:8px 24px" onclick="document.getElementById('modal-jornada').classList.remove('on')">CERRAR</button>
+    <div class="pts-total" id="modal-total"></div>
+    <div style="text-align:center;margin-top:16px">
+      <button class="sim-btn" style="width:auto;padding:9px 28px;font-size:12px" onclick="document.getElementById('modal-ovl').classList.remove('on')">CERRAR</button>
     </div>
   </div>
 </div>
 
 <!-- LOGIN -->
 <div id="app-login">
-  <div style="background:linear-gradient(135deg,#0d0d2b,#1a1a4a);border-bottom:2px solid var(--gold);padding:14px 16px;text-align:center">
-    <div style="font-size:24px;font-weight:900;letter-spacing:3px;color:var(--gold)">RETROCROMO FANTASY</div>
-    <div style="font-size:12px;color:var(--silver);letter-spacing:1px">LaLiga 2025/26 · Temporada Oficial</div>
-  </div>
-  <div class="login-wrap">
-    <div class="login-box">
-      <div class="login-title">ENTRAR</div>
-      <div class="login-sub">Elige tu nombre de manager para empezar</div>
-      <input class="login-input" id="login-nombre" type="text" placeholder="Tu nombre de manager..." maxlength="24" onkeydown="if(event.key==='Enter')entrar()">
-      <button class="login-btn" onclick="entrar()">ENTRAR AL JUEGO</button>
-      <div class="login-error" id="login-error"></div>
+  <div class="login-page">
+    <div class="login-hero">
+      <div class="login-box">
+        <div class="login-logo">RETROCROMO</div>
+        <div class="login-logo-sub">FANTASY LALIGA</div>
+        <div class="login-season">⚽ TEMPORADA 2025 / 26</div>
+        <div class="login-label">Nombre de manager</div>
+        <input class="login-input" id="inp-nombre" type="text" placeholder="Ej: El Madridista..." maxlength="24" onkeydown="if(event.key==='Enter')entrar()">
+        <button class="login-btn" onclick="entrar()">ENTRAR AL JUEGO →</button>
+        <div class="login-err" id="login-err"></div>
+        <div class="login-deco">🏆 ⚽ 🥇</div>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- JUEGO -->
 <div id="app-juego" style="display:none">
-  <div class="header">
-    <div class="header-top">
-      <div class="logo">RETROCROMO FANTASY<span>LaLiga 2025/26 · Temporada Oficial</span></div>
-      <div class="budget-bar">
-        <div class="stat-pill">👤 <span id="h-manager">—</span></div>
-        <div class="stat-pill">💰 <span id="h-budget">100.0</span>M€</div>
-        <div class="stat-pill">👥 <span id="h-squad">0</span>/15</div>
-        <div class="stat-pill">⚡ <span id="h-pts">0</span> pts</div>
-        <button onclick="cerrarSesion()" style="background:none;border:1px solid var(--border);border-radius:20px;padding:4px 10px;font-size:11px;color:var(--muted);cursor:pointer">Salir</button>
+  <div class="hdr">
+    <div class="hdr-top">
+      <div class="logo-wrap">
+        <div class="logo-ball">⚽</div>
+        <div><div class="logo-text">RETROCROMO</div><div class="logo-sub">FANTASY LALIGA 2025/26</div></div>
+      </div>
+      <div class="pills">
+        <div class="pill">👤 <span id="h-mgr">—</span></div>
+        <div class="pill">💰 <span id="h-bud">100.0</span>M€</div>
+        <div class="pill">👥 <span id="h-sq">0</span>/15</div>
+        <div class="pill">⚡ <span id="h-pts">0</span> pts</div>
+        <button class="btn-salir" onclick="cerrarSesion()">Salir</button>
       </div>
     </div>
     <nav class="nav">
-      <button class="nav-btn on" onclick="go('plantilla')">CROMOS</button>
-      <button class="nav-btn" onclick="go('miequipo')">MI EQUIPO</button>
-      <button class="nav-btn" onclick="go('clas')">CLASIFICACIÓN</button>
+      <button class="nav-btn on" onclick="go('cromos')">🃏 CROMOS</button>
+      <button class="nav-btn" onclick="go('equipo')">🏟 MI EQUIPO</button>
+      <button class="nav-btn" onclick="go('clas')">🏆 CLASIFICACIÓN</button>
       <button class="nav-btn" onclick="go('admin')">⚙ ADMIN</button>
     </nav>
   </div>
 
-  <div id="sec-plantilla" class="sec on">
-    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:8px">
-      <div>
-        <div class="sec-title">CROMOS DE JUGADORES</div>
-        <div class="sec-sub">Selecciona hasta 15 · máx. 2 POR · 5 DEF · 5 MED · 3 DEL</div>
-      </div>
-      <input class="search-input" type="text" placeholder="🔍 Buscar jugador..." id="search-input" oninput="renderCromos()">
+  <!-- CROMOS -->
+  <div id="sec-cromos" class="sec on">
+    <div class="sec-hdr" style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">
+      <div><div class="sec-title">🃏 ÁLBUM DE CROMOS</div><div class="sec-sub">Elige tu plantilla · presupuesto 100M€ · máx 2POR 5DEF 5MED 3DEL</div></div>
+      <input class="search-box" type="text" id="search-inp" placeholder="🔍 Buscar jugador..." oninput="renderCromos()">
     </div>
-    <div class="filters" id="filtros-pos">
-      <button class="f-btn on" onclick="setFiltro('TODOS',this)">TODOS</button>
-      <button class="f-btn" onclick="setFiltro('POR',this)">POR</button>
-      <button class="f-btn" onclick="setFiltro('DEF',this)">DEF</button>
-      <button class="f-btn" onclick="setFiltro('MED',this)">MED</button>
-      <button class="f-btn" onclick="setFiltro('DEL',this)">DEL</button>
+    <div class="filters-bar" id="flt-pos">
+      <button class="f-btn on" onclick="setPos('TODOS',this)">TODOS</button>
+      <button class="f-btn pos-POR" onclick="setPos('POR',this)">POR</button>
+      <button class="f-btn pos-DEF" onclick="setPos('DEF',this)">DEF</button>
+      <button class="f-btn pos-MED" onclick="setPos('MED',this)">MED</button>
+      <button class="f-btn pos-DEL" onclick="setPos('DEL',this)">DEL</button>
     </div>
-    <div class="filters" id="filtros-eq"></div>
-    <div class="cards-grid" id="cards-grid"></div>
+    <div class="filters-bar" id="flt-eq" style="gap:4px"></div>
+    <div class="grid-cromos" id="grid-cromos"></div>
   </div>
 
-  <div id="sec-miequipo" class="sec">
-    <div class="sec-title">MI EQUIPO</div>
-    <div class="sec-sub">Pulsa un jugador para eliminarlo</div>
-    <div class="campo" id="campo"></div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px">
-      <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center">
-        <div style="font-size:10px;color:var(--muted);letter-spacing:1px;margin-bottom:4px">PRESUPUESTO</div>
-        <div style="font-size:22px;font-weight:900;color:var(--gold)" id="eq-budget">100.0M€</div>
-      </div>
-      <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center">
-        <div style="font-size:10px;color:var(--muted);letter-spacing:1px;margin-bottom:4px">JUGADORES</div>
-        <div style="font-size:22px;font-weight:900;color:var(--cyan)" id="eq-num">0/15</div>
-      </div>
-      <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center">
-        <div style="font-size:10px;color:var(--muted);letter-spacing:1px;margin-bottom:4px">PUNTOS</div>
-        <div style="font-size:22px;font-weight:900;color:var(--green)" id="eq-pts">0 pts</div>
-      </div>
+  <!-- MI EQUIPO -->
+  <div id="sec-equipo" class="sec">
+    <div class="sec-hdr"><div class="sec-title">🏟 MI EQUIPO</div><div class="sec-sub">Pulsa un jugador para eliminarlo del equipo</div></div>
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-lbl">Presupuesto</div><div class="stat-val gold" id="eq-bud">100M€</div></div>
+      <div class="stat-card"><div class="stat-lbl">Jugadores</div><div class="stat-val cyan" id="eq-num">0/15</div></div>
+      <div class="stat-card"><div class="stat-lbl">Puntos totales</div><div class="stat-val green" id="eq-pts">0</div></div>
     </div>
+    <div class="campo-wrap" id="campo"></div>
   </div>
 
+  <!-- CLASIFICACIÓN -->
   <div id="sec-clas" class="sec">
-    <div class="sec-title">CLASIFICACIÓN</div>
-    <div class="sec-sub">Todos los managers de la liga</div>
-    <div id="ranking-wrap"><div class="loading"><div class="spinner"></div>Cargando clasificación...</div></div>
+    <div class="sec-hdr"><div class="sec-title">🏆 CLASIFICACIÓN</div><div class="sec-sub">Todos los managers de la liga</div></div>
+    <div id="rank-wrap"><div class="spinner-wrap"><div class="spinner"></div>Cargando...</div></div>
   </div>
 
+  <!-- ADMIN -->
   <div id="sec-admin" class="sec">
-    <div class="sec-title">⚙ PANEL DE ADMINISTRADOR</div>
-    <div class="sec-sub">Simula jornadas — afecta a todos los jugadores</div>
-    <div class="admin-panel">
-      <div class="admin-title">Jornadas LaLiga 2025/26</div>
-      <div class="jornadas-grid" id="jornadas-grid"></div>
-      <button class="simular-btn" id="btn-simular" onclick="simularJornada()">▶ SIMULAR SIGUIENTE JORNADA</button>
+    <div class="sec-hdr"><div class="sec-title">⚙ PANEL ADMIN</div><div class="sec-sub">Simula jornadas — afecta a todos los managers en tiempo real</div></div>
+    <div class="admin-card">
+      <div class="admin-card-title">📅 Jornadas LaLiga 2025/26</div>
+      <div class="jornadas-grid" id="j-grid"></div>
+      <button class="sim-btn" id="btn-sim" onclick="simularJornada()">▶ SIMULAR SIGUIENTE JORNADA</button>
     </div>
-    <div class="admin-panel" id="panel-resultados" style="display:none">
-      <div class="admin-title">Últimos resultados — Jornada <span id="jornada-label">–</span></div>
-      <div id="resultados-div"></div>
+    <div class="admin-card" id="last-res" style="display:none">
+      <div class="admin-card-title">Últimos resultados — Jornada <span id="j-lbl">–</span></div>
+      <div id="res-div"></div>
     </div>
   </div>
 </div>
 
 <script>
-// ═══════════════════════════════════════════
-// SUPABASE CONFIG
-// ═══════════════════════════════════════════
-const SB_URL = 'https://zmeekoljoaixdsmpnnqy.supabase.co';
-const SB_KEY = 'sb_publishable_BFFFWRNNjZxFaNQ7JnBlCA_-evYQBN4';
-
-async function sb(path, opts={}){
-  const r = await fetch(SB_URL+'/rest/v1/'+path, {
-    headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':'return=representation',...(opts.headers||{})},
+// ══════════════════════════════════════════
+// SUPABASE
+// ══════════════════════════════════════════
+const SB='https://zmeekoljoaixdsmpnnqy.supabase.co';
+const SK='sb_publishable_BFFFWRNNjZxFaNQ7JnBlCA_-evYQBN4';
+async function q(path,opts={}){
+  const r=await fetch(SB+'/rest/v1/'+path,{
+    headers:{apikey:SK,Authorization:'Bearer '+SK,'Content-Type':'application/json','Prefer':'return=representation',...(opts.headers||{})},
     ...opts
   });
-  if(!r.ok){const e=await r.text();throw new Error(e);}
-  const t=await r.text();
-  return t?JSON.parse(t):null;
+  if(!r.ok)throw new Error(await r.text());
+  const t=await r.text();return t?JSON.parse(t):null;
 }
 
-// ═══════════════════════════════════════════
-// DATOS JUGADORES
-// ═══════════════════════════════════════════
-const EQUIPOS=[
-  {id:'rm',n:'Real Madrid',c:'#9b9b9b'},{id:'fcb',n:'FC Barcelona',c:'#a50044'},
-  {id:'atm',n:'Atlético Madrid',c:'#cb3524'},{id:'vil',n:'Villarreal',c:'#f5d800'},
-  {id:'ath',n:'Athletic Club',c:'#ee2e24'},{id:'rso',n:'Real Sociedad',c:'#0066cc'},
-  {id:'bet',n:'Real Betis',c:'#00954c'},{id:'sev',n:'Sevilla FC',c:'#d4171b'},
-  {id:'gir',n:'Girona FC',c:'#cc0000'},{id:'val',n:'Valencia CF',c:'#ee6623'},
-  {id:'lev',n:'Levante UD',c:'#004a9f'},{id:'elc',n:'Elche CF',c:'#007a3d'},
-  {id:'ovi',n:'Real Oviedo',c:'#003f8a'},{id:'osa',n:'Osasuna',c:'#d4171b'},
-  {id:'esp',n:'Espanyol',c:'#0055a4'},{id:'cel',n:'Celta Vigo',c:'#9bc4e2'},
-  {id:'mal',n:'RCD Mallorca',c:'#c00000'},{id:'ray',n:'Rayo Vallecano',c:'#e63946'},
-  {id:'ala',n:'Alavés',c:'#00529b'},{id:'get',n:'Getafe CF',c:'#004f9f'},
+// ══════════════════════════════════════════
+// EQUIPOS
+// ══════════════════════════════════════════
+const EQ=[
+  {id:'rm', n:'Real Madrid',     c:'#a0a0a0'},{id:'fcb',n:'FC Barcelona',    c:'#a50044'},
+  {id:'atm',n:'Atlético Madrid', c:'#cb3524'},{id:'vil',n:'Villarreal',       c:'#f5d800'},
+  {id:'ath',n:'Athletic Club',   c:'#ee2e24'},{id:'rso',n:'Real Sociedad',    c:'#0066cc'},
+  {id:'bet',n:'Real Betis',      c:'#00954c'},{id:'sev',n:'Sevilla FC',       c:'#d4171b'},
+  {id:'gir',n:'Girona FC',       c:'#cc0000'},{id:'val',n:'Valencia CF',      c:'#ee6623'},
+  {id:'lev',n:'Levante UD',      c:'#004a9f'},{id:'elc',n:'Elche CF',         c:'#007a3d'},
+  {id:'ovi',n:'Real Oviedo',     c:'#003f8a'},{id:'osa',n:'Osasuna',          c:'#d4171b'},
+  {id:'esp',n:'Espanyol',        c:'#0055a4'},{id:'cel',n:'Celta Vigo',       c:'#9bc4e2'},
+  {id:'mal',n:'RCD Mallorca',    c:'#c00000'},{id:'ray',n:'Rayo Vallecano',   c:'#e63946'},
+  {id:'ala',n:'Alavés',          c:'#00529b'},{id:'get',n:'Getafe CF',        c:'#004f9f'},
 ];
 
+// Banderas por nacionalidad
+const FLAGS={
+  'España':'🇪🇸','Francia':'🇫🇷','Brasil':'🇧🇷','Argentina':'🇦🇷','Alemania':'🇩🇪',
+  'Inglaterra':'🏴󠁧󠁢󠁥󠁮󠁧󠁿','Portugal':'🇵🇹','Uruguay':'🇺🇾','Colombia':'🇨🇴','México':'🇲🇽',
+  'Bélgica':'🇧🇪','Ucrania':'🇺🇦','Austria':'🇦🇹','Turquía':'🇹🇷','Polonia':'🇵🇱',
+  'Dinamarca':'🇩🇰','Países Bajos':'🇳🇱','Suecia':'🇸🇪','Noruega':'🇳🇴','Croacia':'🇭🇷',
+  'Eslovenia':'🇸🇮','Venezuela':'🇻🇪','Japón':'🇯🇵','Nigeria':'🇳🇬','Ghana':'🇬🇭',
+  'Senegal':'🇸🇳','Costa de Marfil':'🇨🇮','Marruecos':'🇲🇦','Georgia':'🇬🇪',
+  'Guinea':'🇬🇳','Eslovaquia':'🇸🇰','Serbia':'🇷🇸','Suiza':'🇨🇭','Chile':'🇨🇱',
+  'Paraguay':'🇵🇾','Togo':'🇹🇬','Albania':'🇦🇱','Camerún':'🇨🇲','Kosovo':'🇽🇰',
+  'Macedonia del Norte':'🇲🇰','Islandia':'🇮🇸','Uruguay':'🇺🇾','Rumanía':'🇷🇴',
+  'República Checa':'🇨🇿','Irlanda':'🇮🇪','Angola':'🇦🇴','Canadá':'🇨🇦',
+  'Guadalupe':'🇬🇵','EE. UU.':'🇺🇸','Mozambique':'🇲🇿','Surinam':'🇸🇷',
+  'RD del Congo':'🇨🇩','República Dominicana':'🇩🇴','Costa Rica':'🇨🇷',
+  'Guinea-Bisáu':'🇬🇼','Guinea Ecuatorial':'🇬🇶','Níger':'🇳🇪','Cabo Verde':'🇨🇻',
+};
+
+function flag(nac){
+  if(!nac)return '🌍';
+  const parts=nac.split('/');
+  const pais=parts[parts.length-1].trim();
+  return FLAGS[pais]||FLAGS[parts[0].trim()]||'🌍';
+}
+
+// Foto real solo Yamal; resto: silueta SVG
+const FOTO_YAMAL='https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Lamine_Yamal_2024.jpg/240px-Lamine_Yamal_2024.jpg';
+
+function fotoHTML(j,grande=false){
+  const h=grande?110:110;
+  if(j.n==='Yamal'){
+    return `<img src="${FOTO_YAMAL}" alt="Yamal" style="width:100%;height:${h}px;object-fit:cover;object-position:center top;display:block">`;
+  }
+  const eq=EQ.find(e=>e.id===j.equipo);
+  const col=eq?eq.c:'#555';
+  const skin=j.pos==='POR'?'#f5cba7':j.pos==='DEF'?'#d4a76a':j.pos==='MED'?'#c68642':'#e8b88a';
+  return `<svg width="100%" height="${h}" viewBox="0 0 100 ${h}" xmlns="http://www.w3.org/2000/svg" style="display:block">
+    <defs>
+      <linearGradient id="bg_${j.id}" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="${col}" stop-opacity=".25"/>
+        <stop offset="100%" stop-color="${col}" stop-opacity=".05"/>
+      </linearGradient>
+    </defs>
+    <rect width="100" height="${h}" fill="url(#bg_${j.id})"/>
+    <!-- sombra cuerpo -->
+    <ellipse cx="50" cy="${h-4}" rx="22" ry="5" fill="rgba(0,0,0,.35)"/>
+    <!-- cuerpo -->
+    <path d="M30,${h} Q28,${h-28} 32,${h-48} L50,${h-44} L68,${h-48} Q72,${h-28} 70,${h} Z" fill="${col}" opacity=".7"/>
+    <!-- cuello -->
+    <rect x="44" y="${h-60}" width="12" height="14" rx="4" fill="${skin}" opacity=".85"/>
+    <!-- cabeza -->
+    <circle cx="50" cy="${h-68}" r="16" fill="${skin}" opacity=".85"/>
+    <!-- pelo -->
+    <ellipse cx="50" cy="${h-82}" rx="17" ry="8" fill="rgba(40,25,10,.7)"/>
+    <!-- ojos -->
+    <circle cx="44" cy="${h-70}" r="2" fill="rgba(0,0,0,.5)"/>
+    <circle cx="56" cy="${h-70}" r="2" fill="rgba(0,0,0,.5)"/>
+  </svg>`;
+}
+
+// ══════════════════════════════════════════
+// JUGADORES
+// ══════════════════════════════════════════
 function mkP(e,pos,lista){
-  return lista.map((n,i)=>({
-    id:e+'_'+pos+'_'+i,n,equipo:e,pos,
-    precio:pos==='POR'?+(2+Math.random()*5).toFixed(1):
-           pos==='DEF'?+(2+Math.random()*7).toFixed(1):
-           pos==='MED'?+(3+Math.random()*9).toFixed(1):
-                       +(4+Math.random()*11).toFixed(1),
-    pts:0,ptsAcum:0
-  }));
+  return lista.map((item,i)=>{
+    const [n,nac]=Array.isArray(item)?item:[item,null];
+    return {
+      id:e+'_'+pos+'_'+i,n,equipo:e,pos,nac,
+      precio:pos==='POR'?+(2+Math.random()*5).toFixed(1):
+             pos==='DEF'?+(2+Math.random()*7).toFixed(1):
+             pos==='MED'?+(3+Math.random()*9).toFixed(1):
+                         +(4+Math.random()*11).toFixed(1),
+      pts:0,ptsAcum:0
+    };
+  });
 }
 
-const JUGADORES=[
-  ...mkP('rm','POR',['Courtois','Lunin','Fran González']),
-  ...mkP('rm','DEF',['T.Alexander-Arnold','Militão','Rüdiger','Alaba','Carvajal','Mendy','Fran García','Vallejo','R.Asencio','Huijsen','Á.Carreras']),
-  ...mkP('rm','MED',['Bellingham','Valverde','Camavinga','Tchouaméni','A.Güler','Mastantuono','Ceballos']),
-  ...mkP('rm','DEL',['Mbappé','Vinícius Jr','Rodrygo','Endrick','Brahim Díaz','G.García']),
-  ...mkP('fcb','POR',['Szczęsny','I.Peña','Joan García','Kochen']),
-  ...mkP('fcb','DEF',['Cubarsí','Araújo','Koundé','Christensen','Balde','Í.Martínez','E.García','Fort','G.Martín','Cancelo']),
-  ...mkP('fcb','MED',['Pedri','Gavi','De Jong','Casadó','M.Bernal','Fermín','Dani Olmo','P.Torre']),
-  ...mkP('fcb','DEL',['Yamal','Rashford','Lewandowski','Raphinha','Ferran Torres','Ansu Fati','Pau Víctor','Bardghji']),
-  ...mkP('atm','POR',['Oblak','Musso']),
-  ...mkP('atm','DEF',['Le Normand','J.M.Giménez','Molina','Azpilicueta','Reinildo','J.Galán','Lenglet','Spina']),
-  ...mkP('atm','MED',['Gallagher','De Paul','Koke','P.Barrios','M.Llorente','Lemar','Á.Baena']),
-  ...mkP('atm','DEL',['J.Álvarez','Griezmann','Sørloth','Á.Correa','S.Lino','Riquelme','G.Simeone']),
-  ...mkP('vil','POR',['D.Conde','Luiz Júnior']),
-  ...mkP('vil','DEF',['L.Costa','Bailly','Kambwala','Foyth','S.Cardona','Pedraza','K.Femenía','Albiol','R.Marín']),
-  ...mkP('vil','MED',['Parejo','P.Gueye','Comesaña','Terrats','Y.Pino','Moleiro']),
-  ...mkP('vil','DEL',['G.Moreno','Ayoze','Pépé','T.Barry','Akhomach']),
-  ...mkP('ath','POR',['U.Simón','Agirrezabala']),
-  ...mkP('ath','DEF',['D.Vivian','A.Paredes','Yeray','U.Núñez','Gorosabel','Ó.de Marcos','Berchiche','Boiro']),
-  ...mkP('ath','MED',['Ruiz de Galarreta','Vesga','B.Prados','Sancet','U.Gómez','Jauregizar','R.Navarro']),
-  ...mkP('ath','DEL',['Nico Williams','Iñaki Williams','Guruzeta','Berenguer','Á.Djaló','J.Martón']),
-  ...mkP('rso','POR',['Remiro','Marrero']),
-  ...mkP('rso','DEF',['Aguerd','Zubeldia','J.Pacheco','J.Martín','J.López','A.Muñoz','Odriozola','Aramburu']),
-  ...mkP('rso','MED',['Zubimendi','Sučić','B.Méndez','Turrientes','González de Zárate','C.Soler','S.Gómez']),
-  ...mkP('rso','DEL',['Oyarzabal','Óskarsson','Becker','Kubo','Barrenetxea','G.Guedes','S.Umar']),
-  ...mkP('bet','POR',['Á.Valles','Pau López','Adrián']),
-  ...mkP('bet','DEF',['D.Llorente','Bartra','Natan','V.Gómez','Bellerín','Junior Firpo','R.Rodríguez','D.Bladi']),
-  ...mkP('bet','MED',['Lo Celso','Isco','M.Roca','Cardoso','Altimira','Fornals','Losada','Fidalgo']),
-  ...mkP('bet','DEL',['Antony','Chimy Ávila','Abde','Cucho','Bakambu','Ruibal']),
-  ...mkP('sev','POR',['Á.Fernández','Nyland']),
-  ...mkP('sev','DEF',['Badé','Kike Salas','Marcão','Nianzou','V.Barco','A.Pedrosa','Montiel','Carmona']),
-  ...mkP('sev','MED',['Lokonga','Saúl','Agoumé','D.Sow','Juanlu','Peque']),
-  ...mkP('sev','DEL',['Lukébakio','R.Vargas','Suso','Ejuke','Iheanacho','I.Romero']),
-  ...mkP('gir','POR',['Gazzaniga','Pau López']),
-  ...mkP('gir','DEF',['D.Blind','Krejčí','A.Francés','D.López','M.Gutiérrez','Á.Moreno','A.Martínez']),
-  ...mkP('gir','MED',['Y.Herrera','I.Martín','Van de Beek','O.Romeu','J.Solís','Misehouy']),
-  ...mkP('gir','DEL',['Tsygankov','Bryan Gil','Danjuma','Portu','Abel Ruiz','Miovski','Stuani']),
-  ...mkP('val','POR',['Mamardashvili','Dimitrievski']),
-  ...mkP('val','DEF',['Mosquera','Tárrega','Gasiorowski','Diakhaby','Gayà','T.Correia','Foulquier']),
-  ...mkP('val','MED',['Pepelu','Guillamón','Javi Guerra','A.Almeida','Barrenechea','Ugrinic']),
-  ...mkP('val','DEL',['Hugo Duro','Rafa Mir','Dani Gómez','L.Rioja','S.Canós','F.Pérez','D.López']),
-  ...mkP('lev','POR',['A.Fernández','A.Pastor']),
-  ...mkP('lev','DEF',['Elgezabal','De la Fuente','Cabello','M.Navarro','Pampín','A.García','Toljan']),
-  ...mkP('lev','MED',['Iborra','O.Rey','Kochorashvili','P.Martínez','Algobia','C.Álvarez','Olasagasti']),
-  ...mkP('lev','DEL',['Brugué','Morales','I.Romero','Fabrício','Espí']),
-  ...mkP('elc','POR',['Dituro','San Román']),
-  ...mkP('elc','DEF',['Mario Gaspar','Bigas','Diaby','Affengruber','Clerc','Á.Núñez','Salinas']),
-  ...mkP('elc','MED',['Febas','Gumbau','N.Castro','R.Guti','R.Mendoza','Ferrández','G.Valera']),
-  ...mkP('elc','DEL',['El Ghezouani','S.Kaba','A.Álvarez','Yago','Rashani']),
-  ...mkP('ovi','POR',['Escandell','Braat']),
-  ...mkP('ovi','DEF',['Costas','D.Calvo','Luengo','J.Vázquez','Alhassane','Ahijado','Á.Lemos']),
-  ...mkP('ovi','MED',['Colombatto','Sibo','Del Moral','Seoane','Cazorla','A.Reina']),
-  ...mkP('ovi','DEL',['Alemão','Chaira','Hassan','Moyano','De la Fuente','Paraschiv']),
-  ...mkP('osa','POR',['S.Herrera','A.Fernández']),
-  ...mkP('osa','DEF',['Catena','Boyomo','Herrando','J.Cruz','Bretones','Areso','R.Peña','N.Vidal']),
-  ...mkP('osa','MED',['Torró','Moncayola','I.Muñoz','P.Ibáñez','A.Oroz','R.García','Moi Gómez']),
-  ...mkP('osa','DEL',['Budimir','B.Zaragoza','R.García de Haro','K.Barja','Arnaiz']),
-  ...mkP('esp','POR',['Joan García','F.Pacheco']),
-  ...mkP('esp','DEF',['Kumbulla','L.Cabrera','S.Gómez','Calero','C.Romero','Oliván','El Hilali']),
-  ...mkP('esp','MED',['A.Král','Gragera','Lozano','Aguado','Edu Expósito']),
-  ...mkP('esp','DEL',['J.Puado','Véliz','Cheddira','P.Milla','Salvi','J.Carreras','Dolan']),
-  ...mkP('cel','POR',['Guaita','I.Villar']),
-  ...mkP('cel','DEF',['Starfelt','Jailson','C.Domínguez','Aidoo','J.Rodríguez','Ristić','M.Alonso','Mingueza']),
-  ...mkP('cel','MED',['Moriba','F.Beltrán','H.Sotelo','D.Rodríguez','Swedberg','H.Álvarez']),
-  ...mkP('cel','DEL',['Aspas','B.Iglesias','Douvikas','Alfon','Bamba','P.Durán']),
-  ...mkP('mal','POR',['D.Greif','L.Román']),
-  ...mkP('mal','DEF',['Raíllo','Valjent','Copete','Mojica','T.Lato','Maffeo','M.Morey']),
-  ...mkP('mal','MED',['S.Costa','Mascarell','Morlanes','S.Darder','R.Navarro','P.Torre','V.Fernández']),
-  ...mkP('mal','DEL',['Muriqi','C.Larin','A.Prats','T.Asano','Chiquinho']),
-  ...mkP('ray','POR',['A.Batalla','D.Cárdenas']),
-  ...mkP('ray','DEF',['Lejeune','A.Mumin','Aridane','P.Fernández','Chavarría','A.Espino','Rațiu','Balliu']),
-  ...mkP('ray','MED',['Ó.Valentín','P.Ciss','U.López','Gumbau','James Rodríguez','Ó.Trejo']),
-  ...mkP('ray','DEL',['RDT','S.Camello','Nteka','Isi Palazón','J.de Frutos','Á.García','Embarba']),
-  ...mkP('ala','POR',['Sivera','Owono']),
-  ...mkP('ala','DEF',['Abqar','Sedlar','Mouriño','A.Pica','M.Sánchez','H.Novoa','Tenaglia']),
-  ...mkP('ala','MED',['A.Blanco','A.Guevara','J.Guridi','Benavídez','J.Jordán','Aleñá']),
-  ...mkP('ala','DEL',['T.Martínez','K.García','C.Martín','Conechny','Rebbach','C.Vicente','L.Romero']),
-  ...mkP('get','POR',['D.Soria','Letacek']),
-  ...mkP('get','DEF',['Alderete','Djené','Berrocal','D.Rico','Angileri','J.Iglesias','Nyom']),
-  ...mkP('get','MED',['L.Milla','Arambarri','Y.Santiago','Aberdin','John Patrick']),
-  ...mkP('get','DEL',['B.Mayoral','C.Uche','B.Yıldırım','P.Federico','A.Sancris','C.Pérez']),
+const JJ=[
+  ...mkP('rm','POR',[['Courtois','Bélgica'],['Lunin','Ucrania'],['Fran González','España']]),
+  ...mkP('rm','DEF',[['T.Alexander-Arnold','Inglaterra'],['Militão','Brasil'],['Rüdiger','Alemania'],['Alaba','Austria'],['Carvajal','España'],['Mendy','Francia'],['Fran García','España'],['Huijsen','España'],['R.Asencio','España'],['Á.Carreras','España']]),
+  ...mkP('rm','MED',[['Bellingham','Inglaterra'],['Valverde','Uruguay'],['Camavinga','Francia'],['Tchouaméni','Francia'],['A.Güler','Turquía'],['Mastantuono','Argentina'],['Ceballos','España']]),
+  ...mkP('rm','DEL',[['Mbappé','Francia'],['Vinícius Jr','Brasil'],['Rodrygo','Brasil'],['Endrick','Brasil'],['Brahim Díaz','Marruecos'],['G.García','España']]),
+
+  ...mkP('fcb','POR',[['Szczęsny','Polonia'],['I.Peña','España'],['Joan García','España']]),
+  ...mkP('fcb','DEF',[['Cubarsí','España'],['Araújo','Uruguay'],['Koundé','Francia'],['Christensen','Dinamarca'],['Balde','España'],['Í.Martínez','España'],['E.García','España'],['Cancelo','Portugal']]),
+  ...mkP('fcb','MED',[['Pedri','España'],['Gavi','España'],['De Jong','Países Bajos'],['Casadó','España'],['Fermín','España'],['Dani Olmo','España'],['P.Torre','España']]),
+  ...mkP('fcb','DEL',[['Yamal','España'],['Rashford','Inglaterra'],['Lewandowski','Polonia'],['Raphinha','Brasil'],['Ferran Torres','España'],['Ansu Fati','España']]),
+
+  ...mkP('atm','POR',[['Oblak','Eslovenia'],['Musso','Argentina']]),
+  ...mkP('atm','DEF',[['Le Normand','España'],['J.M.Giménez','Uruguay'],['Molina','Argentina'],['Azpilicueta','España'],['Reinildo','Mozambique'],['J.Galán','España']]),
+  ...mkP('atm','MED',[['Gallagher','Inglaterra'],['De Paul','Argentina'],['Koke','España'],['P.Barrios','España'],['M.Llorente','España'],['Á.Baena','España']]),
+  ...mkP('atm','DEL',[['J.Álvarez','Argentina'],['Griezmann','Francia'],['Sørloth','Noruega'],['Á.Correa','Argentina'],['G.Simeone','Argentina']]),
+
+  ...mkP('vil','POR',[['D.Conde','España'],['Luiz Júnior','Brasil']]),
+  ...mkP('vil','DEF',[['Foyth','Argentina'],['S.Cardona','España'],['Pedraza','España'],['Albiol','España'],['R.Marín','España']]),
+  ...mkP('vil','MED',[['Parejo','España'],['P.Gueye','Senegal'],['Y.Pino','España'],['Moleiro','España']]),
+  ...mkP('vil','DEL',[['G.Moreno','España'],['Ayoze','España'],['T.Barry','Francia'],['Akhomach','Marruecos']]),
+
+  ...mkP('ath','POR',[['U.Simón','España'],['Agirrezabala','España']]),
+  ...mkP('ath','DEF',[['D.Vivian','España'],['Yeray','España'],['Gorosabel','España'],['Berchiche','España']]),
+  ...mkP('ath','MED',[['Sancet','España'],['U.Gómez','España'],['R.Navarro','España']]),
+  ...mkP('ath','DEL',[['Nico Williams','España'],['Iñaki Williams','Ghana'],['Guruzeta','España'],['Berenguer','España']]),
+
+  ...mkP('rso','POR',[['Remiro','España']]),
+  ...mkP('rso','DEF',[['Aguerd','Marruecos'],['Zubeldia','España'],['J.López','España'],['Aramburu','Venezuela']]),
+  ...mkP('rso','MED',[['Zubimendi','España'],['B.Méndez','España'],['C.Soler','España']]),
+  ...mkP('rso','DEL',[['Oyarzabal','España'],['Kubo','Japón'],['Barrenetxea','España'],['G.Guedes','Portugal']]),
+
+  ...mkP('bet','POR',[['Á.Valles','España'],['Pau López','España']]),
+  ...mkP('bet','DEF',[['Bartra','España'],['Bellerín','España'],['Junior Firpo','República Dominicana']]),
+  ...mkP('bet','MED',[['Lo Celso','Argentina'],['Isco','España'],['Fornals','España'],['Fidalgo','España']]),
+  ...mkP('bet','DEL',[['Antony','Brasil'],['Chimy Ávila','Argentina'],['Abde','Marruecos'],['Cucho','Colombia']]),
+
+  ...mkP('sev','POR',[['Á.Fernández','España'],['Nyland','Noruega']]),
+  ...mkP('sev','DEF',[['Badé','Francia'],['Kike Salas','España'],['Montiel','Argentina'],['Carmona','España']]),
+  ...mkP('sev','MED',[['Saúl','España'],['D.Sow','Suiza'],['Juanlu','España']]),
+  ...mkP('sev','DEL',[['Lukébakio','Bélgica'],['I.Romero','España'],['Iheanacho','Nigeria']]),
+
+  ...mkP('gir','POR',[['Gazzaniga','Argentina']]),
+  ...mkP('gir','DEF',[['D.Blind','Países Bajos'],['M.Gutiérrez','España'],['Á.Moreno','España'],['A.Martínez','España']]),
+  ...mkP('gir','MED',[['Y.Herrera','Venezuela'],['Van de Beek','Países Bajos'],['O.Romeu','España']]),
+  ...mkP('gir','DEL',[['Bryan Gil','España'],['Stuani','Uruguay'],['Miovski','Macedonia del Norte'],['Tsygankov','Ucrania']]),
+
+  ...mkP('val','POR',[['Mamardashvili','Georgia'],['Dimitrievski','Macedonia del Norte']]),
+  ...mkP('val','DEF',[['Mosquera','España'],['Gayà','España'],['Foulquier','Guadalupe']]),
+  ...mkP('val','MED',[['Pepelu','España'],['Javi Guerra','España'],['Barrenechea','Argentina']]),
+  ...mkP('val','DEL',[['Hugo Duro','España'],['Rafa Mir','España'],['L.Rioja','España']]),
+
+  ...mkP('lev','POR',[['A.Fernández','España']]),
+  ...mkP('lev','DEF',[['Elgezabal','España'],['M.Navarro','España'],['Toljan','Alemania']]),
+  ...mkP('lev','MED',[['Iborra','España'],['Kochorashvili','Georgia'],['Algobia','España']]),
+  ...mkP('lev','DEL',[['Morales','España'],['I.Romero','España'],['Brugué','España']]),
+
+  ...mkP('elc','POR',[['Dituro','Argentina']]),
+  ...mkP('elc','DEF',[['Mario Gaspar','España'],['Diaby','Senegal'],['Clerc','España']]),
+  ...mkP('elc','MED',[['Febas','España'],['R.Guti','España'],['G.Valera','España']]),
+  ...mkP('elc','DEL',[['S.Kaba','Guinea'],['A.Álvarez','Uruguay'],['Rashani','Kosovo']]),
+
+  ...mkP('ovi','POR',[['Escandell','España']]),
+  ...mkP('ovi','DEF',[['Costas','España'],['D.Calvo','España'],['Á.Lemos','España']]),
+  ...mkP('ovi','MED',[['Colombatto','Argentina'],['Cazorla','España'],['Seoane','España']]),
+  ...mkP('ovi','DEL',[['Alemão','Brasil'],['Hassan','Francia'],['Chaira','Marruecos']]),
+
+  ...mkP('osa','POR',[['S.Herrera','España'],['A.Fernández','España']]),
+  ...mkP('osa','DEF',[['Catena','España'],['Boyomo','Camerún'],['N.Vidal','España']]),
+  ...mkP('osa','MED',[['Moncayola','España'],['A.Oroz','España'],['Moi Gómez','España']]),
+  ...mkP('osa','DEL',[['Budimir','Croacia'],['B.Zaragoza','España'],['K.Barja','España']]),
+
+  ...mkP('esp','POR',[['Joan García','España'],['F.Pacheco','España']]),
+  ...mkP('esp','DEF',[['Kumbulla','Albania'],['L.Cabrera','Uruguay'],['C.Romero','España']]),
+  ...mkP('esp','MED',[['A.Král','República Checa'],['Gragera','España'],['Edu Expósito','España']]),
+  ...mkP('esp','DEL',[['J.Puado','España'],['Véliz','Argentina'],['Cheddira','Marruecos']]),
+
+  ...mkP('cel','POR',[['Guaita','España'],['I.Villar','España']]),
+  ...mkP('cel','DEF',[['Starfelt','Suecia'],['Mingueza','España'],['M.Alonso','España']]),
+  ...mkP('cel','MED',[['F.Beltrán','España'],['Swedberg','Suecia'],['Moriba','Guinea']]),
+  ...mkP('cel','DEL',[['Aspas','España'],['B.Iglesias','España'],['Bamba','Costa de Marfil']]),
+
+  ...mkP('mal','POR',[['D.Greif','Eslovaquia']]),
+  ...mkP('mal','DEF',[['Raíllo','España'],['Valjent','Eslovaquia'],['Maffeo','España']]),
+  ...mkP('mal','MED',[['S.Darder','España'],['S.Costa','Portugal'],['Morlanes','España']]),
+  ...mkP('mal','DEL',[['Muriqi','Kosovo'],['C.Larin','Canadá'],['A.Prats','España']]),
+
+  ...mkP('ray','POR',[['A.Batalla','Argentina'],['D.Cárdenas','España']]),
+  ...mkP('ray','DEF',[['Lejeune','Francia'],['Rațiu','Rumanía'],['A.Espino','Uruguay']]),
+  ...mkP('ray','MED',[['James Rodríguez','Colombia'],['P.Ciss','Senegal'],['Ó.Trejo','Argentina']]),
+  ...mkP('ray','DEL',[['RDT','España'],['Isi Palazón','España'],['Á.García','España']]),
+
+  ...mkP('ala','POR',[['Sivera','España'],['Owono','Guinea Ecuatorial']]),
+  ...mkP('ala','DEF',[['Sedlar','Serbia'],['M.Sánchez','España'],['Tenaglia','Argentina']]),
+  ...mkP('ala','MED',[['A.Guevara','España'],['J.Jordán','España'],['Aleñá','España']]),
+  ...mkP('ala','DEL',[['T.Martínez','España'],['K.García','España'],['L.Romero','Argentina']]),
+
+  ...mkP('get','POR',[['D.Soria','España'],['Letacek','República Checa']]),
+  ...mkP('get','DEF',[['Alderete','Paraguay'],['Djené','Togo'],['D.Rico','España']]),
+  ...mkP('get','MED',[['L.Milla','España'],['Arambarri','Uruguay'],['John Patrick','Irlanda']]),
+  ...mkP('get','DEL',[['B.Mayoral','España'],['C.Uche','Nigeria'],['C.Pérez','España']]),
 ];
 
-const famosos={
+// Precios estrellas
+const FAM={
   'Mbappé':14.5,'Vinícius Jr':14,'Bellingham':13,'Yamal':13,'Lewandowski':12.5,
   'J.Álvarez':11,'Griezmann':10.5,'Raphinha':10,'Nico Williams':9.5,'Courtois':7,
   'Oblak':6.5,'Zubimendi':8,'De Jong':8.5,'Rodrygo':9,'Pedri':10,'Gavi':9,
   'T.Alexander-Arnold':9,'Valverde':9.5,'Aspas':8.5,'Oyarzabal':9,'Tchouaméni':8,
-  'Szczęsny':5.5,'Remiro':6,'U.Simón':6,'Camavinga':8,'Dani Olmo':9,
-  'Koundé':8,'B.Méndez':7,'Sancet':7,'Kubo':8.5,'Rashford':8,
+  'Camavinga':8,'Dani Olmo':9,'Koundé':8,'Kubo':8.5,'Rashford':8,
   'Sørloth':8.5,'Stuani':7,'Budimir':7,'Lukébakio':7.5,'Muriqi':8,
   'Á.Baena':8,'Isco':7.5,'Mamardashvili':6.5,'Hugo Duro':7,'James Rodríguez':8,
 };
-JUGADORES.forEach(j=>{if(famosos[j.n])j.precio=famosos[j.n];});
+JJ.forEach(j=>{if(FAM[j.n])j.precio=FAM[j.n];});
 
-// ═══════════════════════════════════════════
+// ══════════════════════════════════════════
 // ESTADO
-// ═══════════════════════════════════════════
-const PRESUPUESTO_TOTAL=100;
-let managerId=null, managerNombre=null;
-let miEquipo=[], presupuesto=PRESUPUESTO_TOTAL;
-let filtroPos='TODOS', filtroEq='TODOS';
-let jornadaActual=0;
-const TOTAL_JORNADAS=38;
+// ══════════════════════════════════════════
+let mgId=null,mgNombre=null,miEq=[],budget=100,fPos='TODOS',fEq='TODOS',jActual=0;
 
-// ═══════════════════════════════════════════
+// ══════════════════════════════════════════
 // LOGIN
-// ═══════════════════════════════════════════
+// ══════════════════════════════════════════
 async function entrar(){
-  const nombre=document.getElementById('login-nombre').value.trim();
-  if(!nombre){document.getElementById('login-error').textContent='Escribe tu nombre de manager';return;}
-  document.getElementById('login-error').textContent='';
+  const n=document.getElementById('inp-nombre').value.trim();
+  if(!n){document.getElementById('login-err').textContent='Escribe tu nombre';return;}
+  document.getElementById('login-err').textContent='';
   try{
-    // Buscar manager existente
-    let data=await sb('managers?nombre=eq.'+encodeURIComponent(nombre)+'&select=id,nombre');
-    if(data&&data.length>0){
-      managerId=data[0].id;managerNombre=data[0].nombre;
-    } else {
-      // Crear nuevo
-      data=await sb('managers',{method:'POST',body:JSON.stringify({nombre})});
-      managerId=data[0].id;managerNombre=data[0].nombre;
-    }
-    // Cargar plantilla guardada
+    let d=await q('managers?nombre=eq.'+encodeURIComponent(n)+'&select=id,nombre');
+    if(d&&d.length){mgId=d[0].id;mgNombre=d[0].nombre;}
+    else{d=await q('managers',{method:'POST',body:JSON.stringify({nombre:n})});mgId=d[0].id;mgNombre=d[0].nombre;}
     await cargarPlantilla();
-    // Cargar estado de jornadas
-    await cargarJornadas();
+    await sincJornadas();
     document.getElementById('app-login').style.display='none';
     document.getElementById('app-juego').style.display='block';
-    document.getElementById('h-manager').textContent=managerNombre;
-    updateHeader();
-    renderFiltrosEq();
-    renderCromos();
-  }catch(e){
-    document.getElementById('login-error').textContent='Error al conectar. Revisa tu conexión.';
-    console.error(e);
-  }
+    document.getElementById('h-mgr').textContent=mgNombre;
+    updH();renderFltEq();renderCromos();
+  }catch(e){document.getElementById('login-err').textContent='Error de conexión. Inténtalo de nuevo.';console.error(e);}
 }
 
 async function cargarPlantilla(){
-  const data=await sb('plantillas?manager_id=eq.'+managerId+'&select=jugador_id');
-  if(!data)return;
-  miEquipo=[];
-  let coste=0;
-  data.forEach(r=>{
-    const j=JUGADORES.find(p=>p.id===r.jugador_id);
-    if(j){miEquipo.push(j);coste+=j.precio;}
-  });
-  // Cargar puntos acumulados
-  const pts=await sb('puntos?manager_id=eq.'+managerId+'&select=detalle');
-  if(pts){
-    pts.forEach(jornada=>{
-      if(jornada.detalle){
-        jornada.detalle.forEach(d=>{
-          const j=JUGADORES.find(p=>p.id===d.id);
-          if(j)j.ptsAcum=(j.ptsAcum||0)+d.pts;
-        });
-      }
-    });
-  }
-  presupuesto=+(PRESUPUESTO_TOTAL-coste).toFixed(1);
+  const pl=await q('plantillas?manager_id=eq.'+mgId+'&select=jugador_id');
+  miEq=[];let c=0;
+  if(pl)pl.forEach(r=>{const j=JJ.find(p=>p.id===r.jugador_id);if(j){miEq.push(j);c+=j.precio;}});
+  const pts=await q('puntos?manager_id=eq.'+mgId+'&select=detalle');
+  JJ.forEach(j=>{j.ptsAcum=0;j.pts=0;});
+  if(pts)pts.forEach(jr=>{if(jr.detalle)jr.detalle.forEach(d=>{const j=JJ.find(p=>p.id===d.id);if(j)j.ptsAcum+=d.pts;});});
+  budget=+(100-c).toFixed(1);
 }
 
-async function cargarJornadas(){
-  const data=await sb('jornadas?select=numero,jugada,resultados&order=numero.asc');
-  if(!data)return;
-  jornadaActual=0;
-  data.forEach(j=>{
-    if(j.jugada)jornadaActual=j.numero;
-  });
+async function sincJornadas(){
+  const d=await q('jornadas?select=numero,jugada&order=numero.asc');
+  jActual=d?d.filter(j=>j.jugada).length:0;
 }
 
 function cerrarSesion(){
-  managerId=null;managerNombre=null;miEquipo=[];presupuesto=PRESUPUESTO_TOTAL;
-  JUGADORES.forEach(j=>{j.ptsAcum=0;j.pts=0;});
-  jornadaActual=0;
+  mgId=null;miEq=[];budget=100;JJ.forEach(j=>{j.ptsAcum=0;j.pts=0;});jActual=0;
   document.getElementById('app-juego').style.display='none';
   document.getElementById('app-login').style.display='block';
-  document.getElementById('login-nombre').value='';
+  document.getElementById('inp-nombre').value='';
 }
 
-// ═══════════════════════════════════════════
+// ══════════════════════════════════════════
 // NAV
-// ═══════════════════════════════════════════
+// ══════════════════════════════════════════
 function go(id){
   document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));
   document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('on'));
   document.getElementById('sec-'+id).classList.add('on');
-  const map={plantilla:0,miequipo:1,clas:2,admin:3};
-  document.querySelectorAll('.nav-btn')[map[id]].classList.add('on');
-  if(id==='miequipo')renderCampo();
-  if(id==='clas')renderClasificacion();
+  const m={cromos:0,equipo:1,clas:2,admin:3};
+  document.querySelectorAll('.nav-btn')[m[id]].classList.add('on');
+  if(id==='equipo')renderCampo();
+  if(id==='clas')renderClas();
   if(id==='admin')renderAdmin();
 }
 
-// ═══════════════════════════════════════════
+// ══════════════════════════════════════════
 // CROMOS
-// ═══════════════════════════════════════════
-function setFiltro(pos,btn){
-  filtroPos=pos;
-  document.querySelectorAll('#filtros-pos .f-btn').forEach(b=>b.classList.remove('on'));
-  btn.classList.add('on');renderCromos();
+// ══════════════════════════════════════════
+function setPos(p,btn){fPos=p;document.querySelectorAll('#flt-pos .f-btn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');renderCromos();}
+function setEq(e,btn){fEq=e;document.querySelectorAll('#flt-eq .f-btn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');renderCromos();}
+function renderFltEq(){
+  document.getElementById('flt-eq').innerHTML=
+    `<button class="f-btn on" onclick="setEq('TODOS',this)">TODOS</button>`+
+    EQ.map(e=>`<button class="f-btn" onclick="setEq('${e.id}',this)">${e.n.split(' ')[0].substring(0,7)}</button>`).join('');
 }
-function setFiltroEq(eq,btn){
-  filtroEq=eq;
-  document.querySelectorAll('#filtros-eq .f-btn').forEach(b=>b.classList.remove('on'));
-  btn.classList.add('on');renderCromos();
+
+function puedeSel(j){
+  if(miEq.some(m=>m.id===j.id))return true;
+  if(miEq.length>=15||budget<j.precio)return false;
+  return miEq.filter(m=>m.pos===j.pos).length<{POR:2,DEF:5,MED:5,DEL:3}[j.pos];
 }
-function renderFiltrosEq(){
-  const div=document.getElementById('filtros-eq');
-  div.innerHTML=`<button class="f-btn on" onclick="setFiltroEq('TODOS',this)">TODOS</button>`+
-    EQUIPOS.map(e=>`<button class="f-btn" onclick="setFiltroEq('${e.id}',this)">${e.n.split(' ')[0].substring(0,8)}</button>`).join('');
-}
+
 function renderCromos(){
-  const q=document.getElementById('search-input').value.toLowerCase();
-  let lista=JUGADORES.filter(j=>{
-    if(filtroPos!=='TODOS'&&j.pos!==filtroPos)return false;
-    if(filtroEq!=='TODOS'&&j.equipo!==filtroEq)return false;
-    if(q&&!j.n.toLowerCase().includes(q))return false;
+  const s=document.getElementById('search-inp').value.toLowerCase();
+  const lista=JJ.filter(j=>{
+    if(fPos!=='TODOS'&&j.pos!==fPos)return false;
+    if(fEq!=='TODOS'&&j.equipo!==fEq)return false;
+    if(s&&!j.n.toLowerCase().includes(s))return false;
     return true;
   });
-  document.getElementById('cards-grid').innerHTML=lista.map(j=>{
-    const sel=miEquipo.some(m=>m.id===j.id);
-    const eq=EQUIPOS.find(e=>e.id===j.equipo);
-    const puede=puedeSeleccionar(j);
-    return `<div class="cromo${sel?' selected':''}${!sel&&!puede?' disabled':''}" onclick="toggleJugador('${j.id}')">
-      <div class="cromo-stripe" style="background:${eq?eq.c:'#444'}"></div>
-      <div class="cromo-check">✓</div>
-      <div class="cromo-header"><span class="cromo-pos pos-${j.pos}">${j.pos}</span><span class="cromo-num">${j.precio}</span></div>
-      <div class="cromo-body">
-        <div class="cromo-name">${j.n}</div>
-        <div class="cromo-team">${eq?eq.n:j.equipo}</div>
-        <div class="cromo-price">${j.precio.toFixed(1)}<span>M€</span></div>
-        ${j.ptsAcum>0?`<div class="cromo-pts">⚡ ${j.ptsAcum} pts</div>`:''}
+  const eq_map=Object.fromEntries(EQ.map(e=>[e.id,e]));
+  document.getElementById('grid-cromos').innerHTML=lista.map(j=>{
+    const sel=miEq.some(m=>m.id===j.id);
+    const puede=puedeSel(j);
+    const eq=eq_map[j.equipo];
+    const col=eq?eq.c:'#555';
+    return `<div class="cromo-panini pos-${j.pos}${sel?' sel':''}${!sel&&!puede?' dis':''}" onclick="toggleJ('${j.id}')">
+      <div class="cromo-top" style="background:linear-gradient(135deg,${col}33,${col}11)">
+        <span class="cromo-pos-tag">${j.pos}</span>
+        <span style="font-size:18px">${flag(j.nac)}</span>
+      </div>
+      <div class="cromo-check-badge">✓</div>
+      <div class="cromo-foto">${fotoHTML(j)}</div>
+      <div class="cromo-stripe" style="background:linear-gradient(90deg,${col},${col}88)"></div>
+      <div class="cromo-info">
+        <div class="cromo-nombre">${j.n}</div>
+        <div class="cromo-equipo">${eq?eq.n:j.equipo}</div>
+        <div class="cromo-bottom">
+          <div class="cromo-precio">${j.precio.toFixed(1)}<span>M€</span></div>
+          ${j.ptsAcum>0?`<div class="cromo-pts-badge">⚡${j.ptsAcum}</div>`:''}
+        </div>
       </div>
     </div>`;
   }).join('');
 }
-function puedeSeleccionar(j){
-  if(miEquipo.some(m=>m.id===j.id))return true;
-  if(miEquipo.length>=15||presupuesto<j.precio)return false;
-  const max={POR:2,DEF:5,MED:5,DEL:3};
-  return miEquipo.filter(m=>m.pos===j.pos).length<max[j.pos];
-}
 
-async function toggleJugador(id){
-  const j=JUGADORES.find(p=>p.id===id);if(!j)return;
-  const idx=miEquipo.findIndex(m=>m.id===id);
+async function toggleJ(id){
+  const j=JJ.find(p=>p.id===id);if(!j)return;
+  const idx=miEq.findIndex(m=>m.id===id);
   if(idx>=0){
-    miEquipo.splice(idx,1);
-    presupuesto=+(presupuesto+j.precio).toFixed(1);
-    await sb('plantillas?manager_id=eq.'+managerId+'&jugador_id=eq.'+id,{method:'DELETE',headers:{'Prefer':''}});
-    toast(j.n+' eliminado');
+    miEq.splice(idx,1);budget=+(budget+j.precio).toFixed(1);
+    await q('plantillas?manager_id=eq.'+mgId+'&jugador_id=eq.'+id,{method:'DELETE',headers:{'Prefer':''}});
+    toast('❌ '+j.n+' eliminado');
   } else {
-    if(!puedeSeleccionar(j)){
-      if(presupuesto<j.precio)toast('Presupuesto insuficiente');
-      else if(miEquipo.length>=15)toast('Plantilla completa');
-      else toast('Límite de posición alcanzado');
+    if(!puedeSel(j)){
+      if(budget<j.precio)toast('💸 Presupuesto insuficiente');
+      else if(miEq.length>=15)toast('🚫 Plantilla completa (15/15)');
+      else toast('⚠️ Límite de posición');
       return;
     }
-    miEquipo.push(j);
-    presupuesto=+(presupuesto-j.precio).toFixed(1);
-    await sb('plantillas',{method:'POST',body:JSON.stringify({manager_id:managerId,jugador_id:id})});
-    toast(j.n+' añadido ✓');
+    miEq.push(j);budget=+(budget-j.precio).toFixed(1);
+    await q('plantillas',{method:'POST',body:JSON.stringify({manager_id:mgId,jugador_id:id})});
+    toast('✅ '+j.n+' añadido');
   }
-  updateHeader();renderCromos();
+  updH();renderCromos();
 }
 
-// ═══════════════════════════════════════════
+// ══════════════════════════════════════════
 // CAMPO
-// ═══════════════════════════════════════════
+// ══════════════════════════════════════════
 function renderCampo(){
   const pos=['DEL','MED','DEF','POR'];
   const max={POR:2,DEF:5,MED:5,DEL:3};
-  const labels={DEL:'DELANTERA',MED:'MEDIOCAMPO',DEF:'DEFENSA',POR:'PORTERÍA'};
+  const lbl={DEL:'DELANTERA',MED:'MEDIOCAMPO',DEF:'DEFENSA',POR:'PORTERÍA'};
   document.getElementById('campo').innerHTML=pos.map(p=>{
-    const jugs=miEquipo.filter(j=>j.pos===p);
-    const vacios=max[p]-jugs.length;
-    return `<div class="linea-pos">
-      <div class="linea-label">${labels[p]}</div>
+    const jgs=miEq.filter(j=>j.pos===p);
+    const v=max[p]-jgs.length;
+    return `<div class="linea-campo">
+      <div class="linea-lbl">${lbl[p]}</div>
       <div class="linea-slots">
-        ${jugs.map(j=>`<div class="slot-campo lleno" onclick="quitarDelCampo('${j.id}')">
-          <span class="sc-name">${j.n}</span>
-          <span class="sc-pts">${j.ptsAcum}</span>
-          <span class="sc-team">${EQUIPOS.find(e=>e.id===j.equipo)?.n.split(' ')[0]||''}</span>
+        ${jgs.map(j=>`<div class="slot ocp" onclick="quitarSlot('${j.id}')">
+          <div class="slot-foto">${fotoHTML(j)}</div>
+          <span class="slot-nombre">${j.n}</span>
+          <span class="slot-pts">${j.ptsAcum}</span>
+          <span class="slot-eq">${EQ.find(e=>e.id===j.equipo)?.n.split(' ')[0]||''}</span>
         </div>`).join('')}
-        ${Array(vacios).fill(`<div class="slot-campo"><span class="slot-vacio-txt">${p}<br>—</span></div>`).join('')}
+        ${Array(v).fill(`<div class="slot"><div class="slot-vacio">${p}<br>—</div></div>`).join('')}
       </div>
     </div>`;
   }).join('');
-  const tot=miEquipo.reduce((a,j)=>a+j.ptsAcum,0);
-  document.getElementById('eq-budget').textContent=presupuesto.toFixed(1)+'M€';
-  document.getElementById('eq-num').textContent=miEquipo.length+'/15';
-  document.getElementById('eq-pts').textContent=tot+' pts';
+  const tot=miEq.reduce((a,j)=>a+j.ptsAcum,0);
+  document.getElementById('eq-bud').textContent=budget.toFixed(1)+'M€';
+  document.getElementById('eq-num').textContent=miEq.length+'/15';
+  document.getElementById('eq-pts').textContent=tot;
 }
 
-async function quitarDelCampo(id){
-  const j=JUGADORES.find(p=>p.id===id);if(!j)return;
-  miEquipo=miEquipo.filter(m=>m.id!==id);
-  presupuesto=+(presupuesto+j.precio).toFixed(1);
-  await sb('plantillas?manager_id=eq.'+managerId+'&jugador_id=eq.'+id,{method:'DELETE',headers:{'Prefer':''}});
-  updateHeader();renderCampo();toast(j.n+' eliminado');
+async function quitarSlot(id){
+  const j=JJ.find(p=>p.id===id);if(!j)return;
+  miEq=miEq.filter(m=>m.id!==id);budget=+(budget+j.precio).toFixed(1);
+  await q('plantillas?manager_id=eq.'+mgId+'&jugador_id=eq.'+id,{method:'DELETE',headers:{'Prefer':''}});
+  updH();renderCampo();toast('❌ '+j.n+' eliminado');
 }
 
-// ═══════════════════════════════════════════
+// ══════════════════════════════════════════
 // CLASIFICACIÓN
-// ═══════════════════════════════════════════
-async function renderClasificacion(){
-  document.getElementById('ranking-wrap').innerHTML='<div class="loading"><div class="spinner"></div>Cargando clasificación...</div>';
+// ══════════════════════════════════════════
+async function renderClas(){
+  document.getElementById('rank-wrap').innerHTML='<div class="spinner-wrap"><div class="spinner"></div>Cargando clasificación...</div>';
   try{
-    const managers=await sb('managers?select=id,nombre');
-    const ptsData=await sb('puntos?select=manager_id,puntos');
-    const totales={};
-    if(ptsData)ptsData.forEach(r=>{totales[r.manager_id]=(totales[r.manager_id]||0)+r.puntos;});
-    const liga=managers.map(m=>({id:m.id,n:m.nombre,pts:totales[m.id]||0,mine:m.id===managerId}));
-    liga.sort((a,b)=>b.pts-a.pts);
-    document.getElementById('ranking-wrap').innerHTML='<div class="ranking-list">'+
-      liga.map((m,i)=>{
-        const cls=['p1','p2','p3'][i]||'';
-        return `<div class="rank-row${m.mine?' mine':''}">
-          <div class="rank-pos ${cls}">${i+1}</div>
-          <div><div class="rank-name">${m.n}${m.mine?' 👈':''}</div></div>
-          <div class="rank-pts">${m.pts}<span> pts</span></div>
-        </div>`;
-      }).join('')+'</div>';
-  }catch(e){document.getElementById('ranking-wrap').innerHTML='<div class="loading">Error al cargar</div>';}
+    const mgrs=await q('managers?select=id,nombre');
+    const pts=await q('puntos?select=manager_id,puntos');
+    const tot={};if(pts)pts.forEach(r=>tot[r.manager_id]=(tot[r.manager_id]||0)+r.puntos);
+    const liga=mgrs.map(m=>({...m,pts:tot[m.id]||0,mine:m.id===mgId})).sort((a,b)=>b.pts-a.pts);
+    const medals=['🥇','🥈','🥉'];
+    document.getElementById('rank-wrap').innerHTML='<div class="rank-list">'+liga.map((m,i)=>`
+      <div class="rank-row${m.mine?' mine':''}">
+        <div class="rank-num ${['p1','p2','p3'][i]||''}">${i+1}</div>
+        <div class="rank-info"><div class="rank-name">${m.nombre}${m.mine?' 👈':''}</div></div>
+        ${medals[i]?`<div class="rank-medal">${medals[i]}</div>`:''}
+        <div class="rank-pts">${m.pts}<span> pts</span></div>
+      </div>`).join('')+'</div>';
+  }catch(e){document.getElementById('rank-wrap').innerHTML='<div class="spinner-wrap">Error al cargar</div>';}
 }
 
-// ═══════════════════════════════════════════
+// ══════════════════════════════════════════
 // ADMIN
-// ═══════════════════════════════════════════
+// ══════════════════════════════════════════
 async function renderAdmin(){
-  const data=await sb('jornadas?select=numero,jugada,resultados&order=numero.asc');
-  const jugadas=new Set(data?data.filter(j=>j.jugada).map(j=>j.numero):[]);
-  jornadaActual=jugadas.size;
-  const grid=document.getElementById('jornadas-grid');
-  grid.innerHTML=Array.from({length:TOTAL_JORNADAS},(_,i)=>{
-    const n=i+1;
-    const jugada=jugadas.has(n);
-    const siguiente=n===jornadaActual+1;
-    return `<div class="jornada-btn ${jugada?'jugada':siguiente?'siguiente':''}">${jugada?'✓ ':''}J${n}</div>`;
+  await sincJornadas();
+  document.getElementById('j-grid').innerHTML=Array.from({length:38},(_,i)=>{
+    const n=i+1,done=n<=jActual,next=n===jActual+1;
+    return `<div class="j-btn ${done?'done':next?'next':''}">${done?'✓ ':''}J${n}</div>`;
   }).join('');
-  const btn=document.getElementById('btn-simular');
-  btn.disabled=jornadaActual>=TOTAL_JORNADAS;
-  btn.textContent=jornadaActual>=TOTAL_JORNADAS?'TEMPORADA COMPLETADA':'▶ SIMULAR JORNADA '+(jornadaActual+1);
-
-  // Mostrar últimos resultados
-  if(data&&data.length>0){
-    const ultima=data[data.length-1];
-    if(ultima&&ultima.resultados){
-      document.getElementById('panel-resultados').style.display='block';
-      document.getElementById('jornada-label').textContent=ultima.numero;
-      document.getElementById('resultados-div').innerHTML=ultima.resultados.map(r=>
-        `<div class="resultado-match">
-          <span class="team-name-match home">${r.home}</span>
-          <span class="score-box">${r.gh}–${r.ga}</span>
-          <span class="team-name-match">${r.away}</span>
-        </div>`).join('');
-    }
+  const btn=document.getElementById('btn-sim');
+  btn.disabled=jActual>=38;
+  btn.textContent=jActual>=38?'✅ TEMPORADA COMPLETADA':'▶ SIMULAR JORNADA '+(jActual+1);
+  const last=await q('jornadas?select=numero,resultados&jugada=eq.true&order=numero.desc&limit=1');
+  if(last&&last.length&&last[0].resultados){
+    document.getElementById('last-res').style.display='block';
+    document.getElementById('j-lbl').textContent=last[0].numero;
+    document.getElementById('res-div').innerHTML=last[0].resultados.map(r=>`
+      <div class="match-row">
+        <span class="match-team h">${r.home}</span>
+        <span class="match-score">${r.gh}–${r.ga}</span>
+        <span class="match-team a">${r.away}</span>
+      </div>`).join('');
   }
 }
 
 function rnd(a,b){return Math.floor(Math.random()*(b-a+1))+a;}
 
 async function simularJornada(){
-  const btn=document.getElementById('btn-simular');
-  btn.disabled=true;btn.textContent='Simulando...';
-  const numJornada=jornadaActual+1;
-  if(numJornada>TOTAL_JORNADAS)return;
-
-  // Generar partidos
-  const offset=(numJornada-1)*3;
-  const resultados=[];
-  const eqPts={};
-  EQUIPOS.forEach(e=>eqPts[e.id]=0);
+  const btn=document.getElementById('btn-sim');
+  btn.disabled=true;btn.textContent='⏳ Simulando...';
+  const nJ=jActual+1;if(nJ>38)return;
+  const off=(nJ-1)*3;
+  const res=[],eqP={};
+  EQ.forEach(e=>eqP[e.id]=0);
   for(let i=0;i<10;i++){
-    const home=EQUIPOS[(i*2+offset)%20];
-    const away=EQUIPOS[(i*2+1+offset)%20];
+    const h=EQ[(i*2+off)%20],a=EQ[(i*2+1+off)%20];
     const gh=rnd(0,4),ga=rnd(0,3);
-    resultados.push({home:home.n,away:away.n,gh,ga});
-    eqPts[home.id]=gh>ga?1:gh===ga?0.5:0;
-    eqPts[away.id]=ga>gh?1:gh===ga?0.5:0;
+    res.push({home:h.n,away:a.n,gh,ga});
+    eqP[h.id]=gh>ga?1:gh===ga?.5:0;
+    eqP[a.id]=ga>gh?1:gh===ga?.5:0;
   }
-
-  // Guardar jornada en Supabase
-  await sb('jornadas',{method:'POST',body:JSON.stringify({numero:numJornada,jugada:true,resultados,jugada_en:new Date().toISOString()})});
-
-  // Calcular puntos para TODOS los managers
-  const managers=await sb('managers?select=id');
-  const allPlantillas=await sb('plantillas?select=manager_id,jugador_id');
-
-  for(const m of managers){
-    const ids=(allPlantillas||[]).filter(p=>p.manager_id===m.id).map(p=>p.jugador_id);
-    let total=0;
-    const detalle=[];
+  await q('jornadas',{method:'POST',body:JSON.stringify({numero:nJ,jugada:true,resultados:res,jugada_en:new Date().toISOString()})});
+  const mgrs=await q('managers?select=id');
+  const allPl=await q('plantillas?select=manager_id,jugador_id');
+  for(const m of mgrs){
+    const ids=(allPl||[]).filter(p=>p.manager_id===m.id).map(p=>p.jugador_id);
+    let tot=0;const det=[];
     ids.forEach(jid=>{
-      const j=JUGADORES.find(p=>p.id===jid);if(!j)return;
-      const esPor=j.pos==='POR';
-      const goles=esPor?0:rnd(0,j.pos==='DEL'?2:j.pos==='MED'?1:0);
-      const asis=esPor?0:rnd(0,1);
-      const gr=esPor?rnd(0,3):0;
-      const ganó=(eqPts[j.equipo]||0)>=1;
-      let pts=2+(esPor?(goles*6+(gr===0?4:-gr)):(goles*(j.pos==='DEL'?5:j.pos==='MED'?6:7)+asis*3))+(ganó?3:0);
-      if(Math.random()<0.05)pts-=3;else if(Math.random()<0.15)pts-=1;
-      pts=Math.max(0,pts);
-      total+=pts;
-      detalle.push({id:jid,pts});
-      if(m.id===managerId){
-        const jl=JUGADORES.find(p=>p.id===jid);
-        if(jl){jl.pts=pts;jl.ptsAcum=(jl.ptsAcum||0)+pts;}
-      }
+      const j=JJ.find(p=>p.id===jid);if(!j)return;
+      const por=j.pos==='POR';
+      const g=por?0:rnd(0,j.pos==='DEL'?2:j.pos==='MED'?1:0);
+      const as=por?0:rnd(0,1),gr=por?rnd(0,3):0;
+      const win=(eqP[j.equipo]||0)>=1;
+      let pts=2+(por?(g*6+(gr===0?4:-gr)):(g*(j.pos==='DEL'?5:j.pos==='MED'?6:7)+as*3))+(win?3:0);
+      if(Math.random()<.05)pts-=3;else if(Math.random()<.15)pts-=1;
+      pts=Math.max(0,pts);tot+=pts;det.push({id:jid,pts});
+      if(m.id===mgId){const jl=JJ.find(p=>p.id===jid);if(jl){jl.pts=pts;jl.ptsAcum+=pts;}}
     });
-    await sb('puntos',{method:'POST',body:JSON.stringify({manager_id:m.id,jornada:numJornada,puntos:total,detalle})});
+    await q('puntos',{method:'POST',body:JSON.stringify({manager_id:m.id,jornada:nJ,puntos:tot,detalle:det})});
   }
-
-  jornadaActual=numJornada;
-  updateHeader();
-
-  // Modal con resultados del jugador
-  const misPts=miEquipo.reduce((a,j)=>a+(j.pts||0),0);
-  document.getElementById('modal-titulo').textContent=`JORNADA ${numJornada} — RESULTADOS`;
+  jActual=nJ;updH();
+  const miPts=miEq.reduce((a,j)=>a+(j.pts||0),0);
+  document.getElementById('modal-title').textContent=`⚽ JORNADA ${nJ}`;
   document.getElementById('modal-body').innerHTML=
-    `<div style="margin-bottom:10px">
-      <div style="font-size:11px;color:var(--muted);letter-spacing:1px;margin-bottom:6px">PARTIDOS</div>
-      ${resultados.map(r=>`<div class="resultado-match">
-        <span class="team-name-match home">${r.home}</span>
-        <span class="score-box">${r.gh}–${r.ga}</span>
-        <span class="team-name-match">${r.away}</span>
+    `<div style="margin-bottom:12px">
+      <div style="font-size:10px;color:var(--muted);letter-spacing:2px;margin-bottom:8px;text-transform:uppercase">Resultados</div>
+      ${res.map(r=>`<div class="match-row">
+        <span class="match-team h">${r.home}</span>
+        <span class="match-score">${r.gh}–${r.ga}</span>
+        <span class="match-team a">${r.away}</span>
       </div>`).join('')}
     </div>
-    <div style="font-size:11px;color:var(--muted);letter-spacing:1px;margin:10px 0 6px">MIS JUGADORES</div>
-    ${miEquipo.length===0?'<p style="color:var(--muted);font-size:12px;text-align:center">No tienes jugadores</p>':
-      [...miEquipo].sort((a,b)=>(b.pts||0)-(a.pts||0)).map(j=>`
-        <div class="puntos-row">
-          <div><div class="puntos-nombre">${j.n}</div><div class="puntos-equipo">${EQUIPOS.find(e=>e.id===j.equipo)?.n||''} · ${j.pos}</div></div>
-          <div class="puntos-val">${j.pts||0}</div>
+    <div style="font-size:10px;color:var(--muted);letter-spacing:2px;margin-bottom:8px;text-transform:uppercase">Mis jugadores</div>
+    ${miEq.length===0?'<p style="color:var(--muted);font-size:12px;text-align:center;padding:12px">No tienes jugadores en tu equipo</p>':
+      [...miEq].sort((a,b)=>(b.pts||0)-(a.pts||0)).map(j=>`
+        <div class="pts-row">
+          <div><div class="pts-nombre">${flag(j.nac)} ${j.n}</div><div class="pts-eq">${EQ.find(e=>e.id===j.equipo)?.n||''} · ${j.pos}</div></div>
+          <div class="pts-val">${j.pts||0}</div>
         </div>`).join('')}`;
-  document.getElementById('modal-total').textContent=`⚡ ${misPts} puntos esta jornada`;
-  document.getElementById('modal-jornada').classList.add('on');
-  renderAdmin();
-  toast(`Jornada ${numJornada} simulada`);
+  document.getElementById('modal-total').innerHTML=`⚡ ${miPts} pts<span>esta jornada</span>`;
+  document.getElementById('modal-ovl').classList.add('on');
+  renderAdmin();toast(`✅ Jornada ${nJ} simulada`);
 }
 
-// ═══════════════════════════════════════════
+// ══════════════════════════════════════════
 // UTILS
-// ═══════════════════════════════════════════
-function updateHeader(){
-  const tot=miEquipo.reduce((a,j)=>a+(j.ptsAcum||0),0);
-  document.getElementById('h-budget').textContent=presupuesto.toFixed(1);
-  document.getElementById('h-squad').textContent=miEquipo.length;
-  document.getElementById('h-pts').textContent=tot;
+// ══════════════════════════════════════════
+function updH(){
+  const t=miEq.reduce((a,j)=>a+(j.ptsAcum||0),0);
+  document.getElementById('h-bud').textContent=budget.toFixed(1);
+  document.getElementById('h-sq').textContent=miEq.length;
+  document.getElementById('h-pts').textContent=t;
 }
-function toast(msg){
-  const t=document.getElementById('toast');
-  t.textContent=msg;t.style.display='block';
-  clearTimeout(t._t);t._t=setTimeout(()=>t.style.display='none',2500);
+function toast(m){
+  const t=document.getElementById('toast');t.textContent=m;t.style.display='block';
+  clearTimeout(t._t);t._t=setTimeout(()=>t.style.display='none',2400);
 }
 </script>
 </body>
