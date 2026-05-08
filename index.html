@@ -10,37 +10,39 @@
   --gold:#f5c842;--gold2:#e8a800;--silver:#c0c0d0;--bronze:#cd7f32;
   --red:#e63946;--blue:#4361ee;--green:#2dc653;--cyan:#06d6a0;
   --text:#e8e8f0;--muted:#888899;--white:#fff;
-  --rm:#9b9b9b;--fcb:#a50044;--atm:#cb3524;--vil:#f5d800;
-  --ath:#ee2e24;--rso:#0066cc;--bet:#00954c;--sev:#d4171b;
-  --gir:#cc0000;--val:#ee6623;--lev:#004a9f;--elc:#007a3d;
-  --ovi:#003f8a;--osa:#d4171b;--esp:#0055a4;--cel:#9bc4e2;
-  --mal:#c00;--ray:#e63946;--ala:#00529b;--get:#004f9f;
 }
 body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;overflow-x:hidden}
 
-/* HEADER */
 .header{background:linear-gradient(135deg,#0d0d2b,#1a1a4a);border-bottom:2px solid var(--gold);padding:0}
 .header-top{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;flex-wrap:wrap;gap:8px}
 .logo{font-size:22px;font-weight:900;letter-spacing:3px;color:var(--gold);text-shadow:0 0 20px rgba(245,200,66,0.4)}
 .logo span{color:var(--silver);font-size:13px;font-weight:400;letter-spacing:1px;display:block}
-.budget-bar{display:flex;gap:16px;align-items:center}
+.budget-bar{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
 .stat-pill{background:rgba(245,200,66,0.1);border:1px solid rgba(245,200,66,0.3);border-radius:20px;padding:4px 12px;font-size:12px;color:var(--gold);font-weight:700}
 .nav{display:flex;background:#0d0d2b;border-bottom:1px solid var(--border)}
 .nav-btn{flex:1;padding:10px 6px;background:none;border:none;border-bottom:3px solid transparent;color:var(--muted);font-size:12px;font-weight:700;letter-spacing:1px;cursor:pointer;text-transform:uppercase;transition:all .2s}
 .nav-btn:hover{color:var(--text)}
 .nav-btn.on{color:var(--gold);border-bottom-color:var(--gold)}
 
-/* SECTIONS */
 .sec{display:none;padding:12px;max-width:960px;margin:0 auto}
 .sec.on{display:block}
-
-/* SECTION TITLES */
 .sec-title{font-size:18px;font-weight:900;letter-spacing:2px;color:var(--gold);margin-bottom:4px;text-transform:uppercase}
 .sec-sub{font-size:12px;color:var(--muted);margin-bottom:14px}
 
-/* CROMO CARD */
+/* LOGIN */
+.login-wrap{min-height:70vh;display:flex;align-items:center;justify-content:center}
+.login-box{background:var(--panel);border:2px solid var(--gold);border-radius:16px;padding:32px;max-width:360px;width:100%;text-align:center}
+.login-title{font-size:22px;font-weight:900;color:var(--gold);letter-spacing:3px;margin-bottom:8px}
+.login-sub{font-size:12px;color:var(--muted);margin-bottom:24px}
+.login-input{width:100%;background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:14px;color:var(--text);outline:none;margin-bottom:12px}
+.login-input:focus{border-color:var(--gold)}
+.login-btn{width:100%;background:var(--gold);color:#000;border:none;border-radius:8px;padding:11px;font-size:14px;font-weight:900;letter-spacing:1px;cursor:pointer;text-transform:uppercase}
+.login-btn:hover{background:var(--gold2)}
+.login-error{color:var(--red);font-size:12px;margin-top:8px}
+
+/* CROMOS */
 .cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-top:8px}
-.cromo{border-radius:10px;border:2px solid var(--border);background:var(--card);padding:0;cursor:pointer;transition:transform .15s,border-color .15s;position:relative;overflow:hidden;user-select:none}
+.cromo{border-radius:10px;border:2px solid var(--border);background:var(--card);cursor:pointer;transition:transform .15s,border-color .15s;position:relative;overflow:hidden;user-select:none}
 .cromo:hover{transform:scale(1.04);border-color:var(--gold)}
 .cromo.selected{border-color:var(--gold);box-shadow:0 0 12px rgba(245,200,66,0.4)}
 .cromo.disabled{opacity:.45;cursor:default;filter:grayscale(.5)}
@@ -62,7 +64,6 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,san
 .cromo-check{position:absolute;top:4px;right:4px;background:var(--gold);color:#000;border-radius:50%;width:16px;height:16px;font-size:10px;display:none;align-items:center;justify-content:center;font-weight:900}
 .cromo.selected .cromo-check{display:flex}
 
-/* FILTERS */
 .filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
 .f-btn{background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:20px;padding:4px 12px;font-size:11px;font-weight:700;color:var(--muted);cursor:pointer;transition:all .2s;text-transform:uppercase;letter-spacing:1px}
 .f-btn:hover{color:var(--text);border-color:var(--muted)}
@@ -71,7 +72,7 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,san
 .search-input::placeholder{color:var(--muted)}
 .search-input:focus{border-color:var(--gold)}
 
-/* MI EQUIPO - CAMPO */
+/* CAMPO */
 .campo{background:linear-gradient(180deg,#0d2b0d,#1a4a1a);border:2px solid rgba(255,255,255,.1);border-radius:12px;padding:14px;margin-bottom:12px;position:relative;overflow:hidden}
 .campo::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(255,255,255,.04) 59px,rgba(255,255,255,.04) 60px),repeating-linear-gradient(90deg,transparent,transparent 59px,rgba(255,255,255,.04) 59px,rgba(255,255,255,.04) 60px)}
 .linea-pos{margin-bottom:12px;position:relative;z-index:1}
@@ -85,13 +86,11 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,san
 .slot-campo .sc-team{font-size:8px;color:var(--muted)}
 .slot-vacio-txt{font-size:9px;color:rgba(255,255,255,.2);letter-spacing:1px}
 
-/* CLASIFICACION */
+/* RANKING */
 .ranking-list{display:flex;flex-direction:column;gap:6px}
 .rank-row{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px}
 .rank-pos{font-size:20px;font-weight:900;width:28px;text-align:center}
-.rank-pos.p1{color:var(--gold)}
-.rank-pos.p2{color:var(--silver)}
-.rank-pos.p3{color:var(--bronze)}
+.rank-pos.p1{color:var(--gold)}.rank-pos.p2{color:var(--silver)}.rank-pos.p3{color:var(--bronze)}
 .rank-name{flex:1;font-weight:700;font-size:14px}
 .rank-team{font-size:11px;color:var(--muted)}
 .rank-pts{font-size:20px;font-weight:900;color:var(--cyan)}
@@ -102,28 +101,23 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,san
 .admin-panel{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:14px}
 .admin-title{font-size:13px;font-weight:900;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;border-bottom:1px solid var(--border);padding-bottom:8px}
 .jornadas-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:6px;margin-bottom:12px}
-.jornada-btn{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:6px;padding:6px;text-align:center;cursor:pointer;font-size:11px;font-weight:700;color:var(--muted);transition:all .2s}
-.jornada-btn:hover{border-color:var(--gold);color:var(--gold)}
+.jornada-btn{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:6px;padding:6px;text-align:center;font-size:11px;font-weight:700;color:var(--muted)}
 .jornada-btn.jugada{background:rgba(6,214,160,.08);border-color:rgba(6,214,160,.3);color:var(--cyan)}
-.jornada-btn.activa{background:rgba(245,200,66,.15);border-color:var(--gold);color:var(--gold)}
+.jornada-btn.siguiente{background:rgba(245,200,66,.15);border-color:var(--gold);color:var(--gold)}
 .simular-btn{background:var(--gold);color:#000;border:none;border-radius:8px;padding:10px 24px;font-size:13px;font-weight:900;letter-spacing:1px;cursor:pointer;text-transform:uppercase;width:100%;transition:all .2s}
 .simular-btn:hover{background:var(--gold2)}
 .simular-btn:disabled{opacity:.4;cursor:default}
-.resultados{margin-top:12px}
 .resultado-match{display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:rgba(255,255,255,.03);border-radius:6px;margin-bottom:4px;font-size:12px}
 .score-box{font-weight:900;font-size:14px;color:var(--white);background:rgba(0,0,0,.4);padding:2px 8px;border-radius:4px;min-width:40px;text-align:center}
 .team-name-match{flex:1;padding:0 8px;color:var(--muted);font-size:11px}
 .team-name-match.home{text-align:right}
 
-/* TOAST */
-#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--gold);color:#000;padding:8px 20px;border-radius:20px;font-weight:700;font-size:13px;display:none;z-index:999;white-space:nowrap}
+/* LOADING */
+.loading{text-align:center;padding:40px;color:var(--muted);font-size:13px;letter-spacing:2px}
+.spinner{width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px}
+@keyframes spin{to{transform:rotate(360deg)}}
 
-/* SCROLLBAR */
-::-webkit-scrollbar{width:6px}
-::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
-
-/* MODAL JORNADA */
+/* MODAL */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:900;display:none;align-items:center;justify-content:center}
 .modal-overlay.on{display:flex}
 .modal{background:var(--panel);border:2px solid var(--gold);border-radius:16px;padding:20px;max-width:500px;width:90%;max-height:80vh;overflow-y:auto}
@@ -134,34 +128,21 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,san
 .puntos-equipo{color:var(--muted);font-size:10px}
 .puntos-val{font-size:18px;font-weight:900;color:var(--gold)}
 .total-jornada{text-align:center;margin-top:12px;font-size:28px;font-weight:900;color:var(--cyan)}
+
+#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--gold);color:#000;padding:8px 20px;border-radius:20px;font-weight:700;font-size:13px;display:none;z-index:999;white-space:nowrap}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
 </style>
 </head>
 <body>
 
-<div class="header">
-  <div class="header-top">
-    <div class="logo">RETROCROMO FANTASY<span>LaLiga 2025/26 · Temporada Oficial</span></div>
-    <div class="budget-bar">
-      <div class="stat-pill">💰 <span id="h-budget">100.0</span>M€</div>
-      <div class="stat-pill">👥 <span id="h-squad">0</span>/15</div>
-      <div class="stat-pill">⚡ <span id="h-pts">0</span> pts</div>
-    </div>
-  </div>
-  <nav class="nav">
-    <button class="nav-btn on" onclick="go('plantilla')">CROMOS</button>
-    <button class="nav-btn" onclick="go('miequipo')">MI EQUIPO</button>
-    <button class="nav-btn" onclick="go('clas')">CLASIFICACIÓN</button>
-    <button class="nav-btn" onclick="go('admin')">⚙ ADMIN</button>
-  </nav>
-</div>
-
 <div id="toast"></div>
 
-<!-- MODAL RESULTADO JORNADA -->
 <div class="modal-overlay" id="modal-jornada">
   <div class="modal">
     <button class="modal-close" onclick="document.getElementById('modal-jornada').classList.remove('on')">✕</button>
-    <div class="modal-title" id="modal-titulo">Jornada X</div>
+    <div class="modal-title" id="modal-titulo"></div>
     <div id="modal-body"></div>
     <div class="total-jornada" id="modal-total"></div>
     <div style="text-align:center;margin-top:12px">
@@ -170,212 +151,232 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,san
   </div>
 </div>
 
-<!-- CROMOS -->
-<div id="sec-plantilla" class="sec on">
-  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:8px">
-    <div>
-      <div class="sec-title">CROMOS DE JUGADORES</div>
-      <div class="sec-sub">Selecciona hasta 15 jugadores — máx. 2 porteros, 5 defensas, 5 medios, 3 delanteros</div>
-    </div>
-    <input class="search-input" type="text" placeholder="🔍 Buscar jugador..." id="search-input" oninput="renderCromos()">
+<!-- LOGIN -->
+<div id="app-login">
+  <div style="background:linear-gradient(135deg,#0d0d2b,#1a1a4a);border-bottom:2px solid var(--gold);padding:14px 16px;text-align:center">
+    <div style="font-size:24px;font-weight:900;letter-spacing:3px;color:var(--gold)">RETROCROMO FANTASY</div>
+    <div style="font-size:12px;color:var(--silver);letter-spacing:1px">LaLiga 2025/26 · Temporada Oficial</div>
   </div>
-  <div class="filters" id="filtros-pos">
-    <button class="f-btn on" onclick="setFiltro('TODOS',this)">TODOS</button>
-    <button class="f-btn" onclick="setFiltro('POR',this)">POR</button>
-    <button class="f-btn" onclick="setFiltro('DEF',this)">DEF</button>
-    <button class="f-btn" onclick="setFiltro('MED',this)">MED</button>
-    <button class="f-btn" onclick="setFiltro('DEL',this)">DEL</button>
-  </div>
-  <div class="filters" id="filtros-eq" style="gap:4px"></div>
-  <div class="cards-grid" id="cards-grid"></div>
-</div>
-
-<!-- MI EQUIPO -->
-<div id="sec-miequipo" class="sec">
-  <div class="sec-title">MI EQUIPO</div>
-  <div class="sec-sub">Pulsa un jugador para eliminarlo del equipo</div>
-  <div class="campo" id="campo"></div>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px">
-    <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center">
-      <div style="font-size:10px;color:var(--muted);letter-spacing:1px;margin-bottom:4px">PRESUPUESTO</div>
-      <div style="font-size:22px;font-weight:900;color:var(--gold)" id="eq-budget">100.0M€</div>
-    </div>
-    <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center">
-      <div style="font-size:10px;color:var(--muted);letter-spacing:1px;margin-bottom:4px">JUGADORES</div>
-      <div style="font-size:22px;font-weight:900;color:var(--cyan)" id="eq-num">0/15</div>
-    </div>
-    <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center">
-      <div style="font-size:10px;color:var(--muted);letter-spacing:1px;margin-bottom:4px">PUNTOS</div>
-      <div style="font-size:22px;font-weight:900;color:var(--green)" id="eq-pts">0 pts</div>
+  <div class="login-wrap">
+    <div class="login-box">
+      <div class="login-title">ENTRAR</div>
+      <div class="login-sub">Elige tu nombre de manager para empezar</div>
+      <input class="login-input" id="login-nombre" type="text" placeholder="Tu nombre de manager..." maxlength="24" onkeydown="if(event.key==='Enter')entrar()">
+      <button class="login-btn" onclick="entrar()">ENTRAR AL JUEGO</button>
+      <div class="login-error" id="login-error"></div>
     </div>
   </div>
 </div>
 
-<!-- CLASIFICACION -->
-<div id="sec-clas" class="sec">
-  <div class="sec-title">CLASIFICACIÓN</div>
-  <div class="sec-sub">Liga de managers — Temporada 2025/26</div>
-  <div class="ranking-list" id="ranking"></div>
-</div>
-
-<!-- ADMIN -->
-<div id="sec-admin" class="sec">
-  <div class="sec-title">⚙ PANEL DE ADMINISTRADOR</div>
-  <div class="sec-sub">Simula jornadas de la temporada y genera puntuaciones</div>
-  <div class="admin-panel">
-    <div class="admin-title">Jornadas de LaLiga 2025/26</div>
-    <div class="jornadas-grid" id="jornadas-grid"></div>
-    <button class="simular-btn" id="btn-simular" onclick="simularJornada()">▶ SIMULAR SIGUIENTE JORNADA</button>
+<!-- JUEGO -->
+<div id="app-juego" style="display:none">
+  <div class="header">
+    <div class="header-top">
+      <div class="logo">RETROCROMO FANTASY<span>LaLiga 2025/26 · Temporada Oficial</span></div>
+      <div class="budget-bar">
+        <div class="stat-pill">👤 <span id="h-manager">—</span></div>
+        <div class="stat-pill">💰 <span id="h-budget">100.0</span>M€</div>
+        <div class="stat-pill">👥 <span id="h-squad">0</span>/15</div>
+        <div class="stat-pill">⚡ <span id="h-pts">0</span> pts</div>
+        <button onclick="cerrarSesion()" style="background:none;border:1px solid var(--border);border-radius:20px;padding:4px 10px;font-size:11px;color:var(--muted);cursor:pointer">Salir</button>
+      </div>
+    </div>
+    <nav class="nav">
+      <button class="nav-btn on" onclick="go('plantilla')">CROMOS</button>
+      <button class="nav-btn" onclick="go('miequipo')">MI EQUIPO</button>
+      <button class="nav-btn" onclick="go('clas')">CLASIFICACIÓN</button>
+      <button class="nav-btn" onclick="go('admin')">⚙ ADMIN</button>
+    </nav>
   </div>
-  <div class="admin-panel" id="panel-resultados" style="display:none">
-    <div class="admin-title">Resultados — Jornada <span id="jornada-actual-label">–</span></div>
-    <div class="resultados" id="resultados-div"></div>
+
+  <div id="sec-plantilla" class="sec on">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:8px">
+      <div>
+        <div class="sec-title">CROMOS DE JUGADORES</div>
+        <div class="sec-sub">Selecciona hasta 15 · máx. 2 POR · 5 DEF · 5 MED · 3 DEL</div>
+      </div>
+      <input class="search-input" type="text" placeholder="🔍 Buscar jugador..." id="search-input" oninput="renderCromos()">
+    </div>
+    <div class="filters" id="filtros-pos">
+      <button class="f-btn on" onclick="setFiltro('TODOS',this)">TODOS</button>
+      <button class="f-btn" onclick="setFiltro('POR',this)">POR</button>
+      <button class="f-btn" onclick="setFiltro('DEF',this)">DEF</button>
+      <button class="f-btn" onclick="setFiltro('MED',this)">MED</button>
+      <button class="f-btn" onclick="setFiltro('DEL',this)">DEL</button>
+    </div>
+    <div class="filters" id="filtros-eq"></div>
+    <div class="cards-grid" id="cards-grid"></div>
+  </div>
+
+  <div id="sec-miequipo" class="sec">
+    <div class="sec-title">MI EQUIPO</div>
+    <div class="sec-sub">Pulsa un jugador para eliminarlo</div>
+    <div class="campo" id="campo"></div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px">
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center">
+        <div style="font-size:10px;color:var(--muted);letter-spacing:1px;margin-bottom:4px">PRESUPUESTO</div>
+        <div style="font-size:22px;font-weight:900;color:var(--gold)" id="eq-budget">100.0M€</div>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center">
+        <div style="font-size:10px;color:var(--muted);letter-spacing:1px;margin-bottom:4px">JUGADORES</div>
+        <div style="font-size:22px;font-weight:900;color:var(--cyan)" id="eq-num">0/15</div>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center">
+        <div style="font-size:10px;color:var(--muted);letter-spacing:1px;margin-bottom:4px">PUNTOS</div>
+        <div style="font-size:22px;font-weight:900;color:var(--green)" id="eq-pts">0 pts</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="sec-clas" class="sec">
+    <div class="sec-title">CLASIFICACIÓN</div>
+    <div class="sec-sub">Todos los managers de la liga</div>
+    <div id="ranking-wrap"><div class="loading"><div class="spinner"></div>Cargando clasificación...</div></div>
+  </div>
+
+  <div id="sec-admin" class="sec">
+    <div class="sec-title">⚙ PANEL DE ADMINISTRADOR</div>
+    <div class="sec-sub">Simula jornadas — afecta a todos los jugadores</div>
+    <div class="admin-panel">
+      <div class="admin-title">Jornadas LaLiga 2025/26</div>
+      <div class="jornadas-grid" id="jornadas-grid"></div>
+      <button class="simular-btn" id="btn-simular" onclick="simularJornada()">▶ SIMULAR SIGUIENTE JORNADA</button>
+    </div>
+    <div class="admin-panel" id="panel-resultados" style="display:none">
+      <div class="admin-title">Últimos resultados — Jornada <span id="jornada-label">–</span></div>
+      <div id="resultados-div"></div>
+    </div>
   </div>
 </div>
 
 <script>
-// ═══════════════════════════════════════
-// DATOS: LaLiga 25/26 (plantillas reales)
-// ═══════════════════════════════════════
-const EQUIPOS = [
-  {id:'rm',  n:'Real Madrid',     c:'#9b9b9b'},
-  {id:'fcb', n:'FC Barcelona',    c:'#a50044'},
-  {id:'atm', n:'Atlético Madrid', c:'#cb3524'},
-  {id:'vil', n:'Villarreal',      c:'#f5d800'},
-  {id:'ath', n:'Athletic Club',   c:'#ee2e24'},
-  {id:'rso', n:'Real Sociedad',   c:'#0066cc'},
-  {id:'bet', n:'Real Betis',      c:'#00954c'},
-  {id:'sev', n:'Sevilla FC',      c:'#d4171b'},
-  {id:'gir', n:'Girona FC',       c:'#cc0000'},
-  {id:'val', n:'Valencia CF',     c:'#ee6623'},
-  {id:'lev', n:'Levante UD',      c:'#004a9f'},
-  {id:'elc', n:'Elche CF',        c:'#007a3d'},
-  {id:'ovi', n:'Real Oviedo',     c:'#003f8a'},
-  {id:'osa', n:'Osasuna',         c:'#d4171b'},
-  {id:'esp', n:'Espanyol',        c:'#0055a4'},
-  {id:'cel', n:'Celta Vigo',      c:'#9bc4e2'},
-  {id:'mal', n:'RCD Mallorca',    c:'#c00000'},
-  {id:'ray', n:'Rayo Vallecano',  c:'#e63946'},
-  {id:'ala', n:'Alavés',          c:'#00529b'},
-  {id:'get', n:'Getafe CF',       c:'#004f9f'},
+// ═══════════════════════════════════════════
+// SUPABASE CONFIG
+// ═══════════════════════════════════════════
+const SB_URL = 'https://zmeekoljoaixdsmpnnqy.supabase.co';
+const SB_KEY = 'sb_publishable_BFFFWRNNjZxFaNQ7JnBlCA_-evYQBN4';
+
+async function sb(path, opts={}){
+  const r = await fetch(SB_URL+'/rest/v1/'+path, {
+    headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':'return=representation',...(opts.headers||{})},
+    ...opts
+  });
+  if(!r.ok){const e=await r.text();throw new Error(e);}
+  const t=await r.text();
+  return t?JSON.parse(t):null;
+}
+
+// ═══════════════════════════════════════════
+// DATOS JUGADORES
+// ═══════════════════════════════════════════
+const EQUIPOS=[
+  {id:'rm',n:'Real Madrid',c:'#9b9b9b'},{id:'fcb',n:'FC Barcelona',c:'#a50044'},
+  {id:'atm',n:'Atlético Madrid',c:'#cb3524'},{id:'vil',n:'Villarreal',c:'#f5d800'},
+  {id:'ath',n:'Athletic Club',c:'#ee2e24'},{id:'rso',n:'Real Sociedad',c:'#0066cc'},
+  {id:'bet',n:'Real Betis',c:'#00954c'},{id:'sev',n:'Sevilla FC',c:'#d4171b'},
+  {id:'gir',n:'Girona FC',c:'#cc0000'},{id:'val',n:'Valencia CF',c:'#ee6623'},
+  {id:'lev',n:'Levante UD',c:'#004a9f'},{id:'elc',n:'Elche CF',c:'#007a3d'},
+  {id:'ovi',n:'Real Oviedo',c:'#003f8a'},{id:'osa',n:'Osasuna',c:'#d4171b'},
+  {id:'esp',n:'Espanyol',c:'#0055a4'},{id:'cel',n:'Celta Vigo',c:'#9bc4e2'},
+  {id:'mal',n:'RCD Mallorca',c:'#c00000'},{id:'ray',n:'Rayo Vallecano',c:'#e63946'},
+  {id:'ala',n:'Alavés',c:'#00529b'},{id:'get',n:'Getafe CF',c:'#004f9f'},
 ];
 
 function mkP(e,pos,lista){
   return lista.map((n,i)=>({
-    id:e+'_'+pos+'_'+i, n, equipo:e, pos,
-    precio: pos==='POR'?+(2+Math.random()*6).toFixed(1):
-            pos==='DEF'?+(2+Math.random()*8).toFixed(1):
-            pos==='MED'?+(3+Math.random()*10).toFixed(1):
-                        +(4+Math.random()*12).toFixed(1),
-    pts:0, ptsAcum:0
+    id:e+'_'+pos+'_'+i,n,equipo:e,pos,
+    precio:pos==='POR'?+(2+Math.random()*5).toFixed(1):
+           pos==='DEF'?+(2+Math.random()*7).toFixed(1):
+           pos==='MED'?+(3+Math.random()*9).toFixed(1):
+                       +(4+Math.random()*11).toFixed(1),
+    pts:0,ptsAcum:0
   }));
 }
 
-const JUGADORES = [
-  // REAL MADRID
+const JUGADORES=[
   ...mkP('rm','POR',['Courtois','Lunin','Fran González']),
   ...mkP('rm','DEF',['T.Alexander-Arnold','Militão','Rüdiger','Alaba','Carvajal','Mendy','Fran García','Vallejo','R.Asencio','Huijsen','Á.Carreras']),
   ...mkP('rm','MED',['Bellingham','Valverde','Camavinga','Tchouaméni','A.Güler','Mastantuono','Ceballos']),
   ...mkP('rm','DEL',['Mbappé','Vinícius Jr','Rodrygo','Endrick','Brahim Díaz','G.García']),
-  // FC BARCELONA
-  ...mkP('fcb','POR',['Joan García','Szczęsny','I.Peña','Kochen']),
+  ...mkP('fcb','POR',['Szczęsny','I.Peña','Joan García','Kochen']),
   ...mkP('fcb','DEF',['Cubarsí','Araújo','Koundé','Christensen','Balde','Í.Martínez','E.García','Fort','G.Martín','Cancelo']),
   ...mkP('fcb','MED',['Pedri','Gavi','De Jong','Casadó','M.Bernal','Fermín','Dani Olmo','P.Torre']),
   ...mkP('fcb','DEL',['Yamal','Rashford','Lewandowski','Raphinha','Ferran Torres','Ansu Fati','Pau Víctor','Bardghji']),
-  // ATLÉTICO DE MADRID
   ...mkP('atm','POR',['Oblak','Musso']),
   ...mkP('atm','DEF',['Le Normand','J.M.Giménez','Molina','Azpilicueta','Reinildo','J.Galán','Lenglet','Spina']),
   ...mkP('atm','MED',['Gallagher','De Paul','Koke','P.Barrios','M.Llorente','Lemar','Á.Baena']),
   ...mkP('atm','DEL',['J.Álvarez','Griezmann','Sørloth','Á.Correa','S.Lino','Riquelme','G.Simeone']),
-  // VILLARREAL
   ...mkP('vil','POR',['D.Conde','Luiz Júnior']),
   ...mkP('vil','DEF',['L.Costa','Bailly','Kambwala','Foyth','S.Cardona','Pedraza','K.Femenía','Albiol','R.Marín']),
   ...mkP('vil','MED',['Parejo','P.Gueye','Comesaña','Terrats','Y.Pino','Moleiro']),
   ...mkP('vil','DEL',['G.Moreno','Ayoze','Pépé','T.Barry','Akhomach']),
-  // ATHLETIC CLUB
   ...mkP('ath','POR',['U.Simón','Agirrezabala']),
   ...mkP('ath','DEF',['D.Vivian','A.Paredes','Yeray','U.Núñez','Gorosabel','Ó.de Marcos','Berchiche','Boiro']),
   ...mkP('ath','MED',['Ruiz de Galarreta','Vesga','B.Prados','Sancet','U.Gómez','Jauregizar','R.Navarro']),
   ...mkP('ath','DEL',['Nico Williams','Iñaki Williams','Guruzeta','Berenguer','Á.Djaló','J.Martón']),
-  // REAL SOCIEDAD
   ...mkP('rso','POR',['Remiro','Marrero']),
   ...mkP('rso','DEF',['Aguerd','Zubeldia','J.Pacheco','J.Martín','J.López','A.Muñoz','Odriozola','Aramburu']),
   ...mkP('rso','MED',['Zubimendi','Sučić','B.Méndez','Turrientes','González de Zárate','C.Soler','S.Gómez']),
   ...mkP('rso','DEL',['Oyarzabal','Óskarsson','Becker','Kubo','Barrenetxea','G.Guedes','S.Umar']),
-  // REAL BETIS
   ...mkP('bet','POR',['Á.Valles','Pau López','Adrián']),
   ...mkP('bet','DEF',['D.Llorente','Bartra','Natan','V.Gómez','Bellerín','Junior Firpo','R.Rodríguez','D.Bladi']),
   ...mkP('bet','MED',['Lo Celso','Isco','M.Roca','Cardoso','Altimira','Fornals','Losada','Fidalgo']),
   ...mkP('bet','DEL',['Antony','Chimy Ávila','Abde','Cucho','Bakambu','Ruibal']),
-  // SEVILLA
   ...mkP('sev','POR',['Á.Fernández','Nyland']),
   ...mkP('sev','DEF',['Badé','Kike Salas','Marcão','Nianzou','V.Barco','A.Pedrosa','Montiel','Carmona']),
   ...mkP('sev','MED',['Lokonga','Saúl','Agoumé','D.Sow','Juanlu','Peque']),
   ...mkP('sev','DEL',['Lukébakio','R.Vargas','Suso','Ejuke','Iheanacho','I.Romero']),
-  // GIRONA
   ...mkP('gir','POR',['Gazzaniga','Pau López']),
   ...mkP('gir','DEF',['D.Blind','Krejčí','A.Francés','D.López','M.Gutiérrez','Á.Moreno','A.Martínez']),
   ...mkP('gir','MED',['Y.Herrera','I.Martín','Van de Beek','O.Romeu','J.Solís','Misehouy']),
   ...mkP('gir','DEL',['Tsygankov','Bryan Gil','Danjuma','Portu','Abel Ruiz','Miovski','Stuani']),
-  // VALENCIA
   ...mkP('val','POR',['Mamardashvili','Dimitrievski']),
   ...mkP('val','DEF',['Mosquera','Tárrega','Gasiorowski','Diakhaby','Gayà','T.Correia','Foulquier']),
   ...mkP('val','MED',['Pepelu','Guillamón','Javi Guerra','A.Almeida','Barrenechea','Ugrinic']),
   ...mkP('val','DEL',['Hugo Duro','Rafa Mir','Dani Gómez','L.Rioja','S.Canós','F.Pérez','D.López']),
-  // LEVANTE
   ...mkP('lev','POR',['A.Fernández','A.Pastor']),
   ...mkP('lev','DEF',['Elgezabal','De la Fuente','Cabello','M.Navarro','Pampín','A.García','Toljan']),
   ...mkP('lev','MED',['Iborra','O.Rey','Kochorashvili','P.Martínez','Algobia','C.Álvarez','Olasagasti']),
   ...mkP('lev','DEL',['Brugué','Morales','I.Romero','Fabrício','Espí']),
-  // ELCHE
   ...mkP('elc','POR',['Dituro','San Román']),
   ...mkP('elc','DEF',['Mario Gaspar','Bigas','Diaby','Affengruber','Clerc','Á.Núñez','Salinas']),
   ...mkP('elc','MED',['Febas','Gumbau','N.Castro','R.Guti','R.Mendoza','Ferrández','G.Valera']),
   ...mkP('elc','DEL',['El Ghezouani','S.Kaba','A.Álvarez','Yago','Rashani']),
-  // REAL OVIEDO
   ...mkP('ovi','POR',['Escandell','Braat']),
   ...mkP('ovi','DEF',['Costas','D.Calvo','Luengo','J.Vázquez','Alhassane','Ahijado','Á.Lemos']),
   ...mkP('ovi','MED',['Colombatto','Sibo','Del Moral','Seoane','Cazorla','A.Reina']),
   ...mkP('ovi','DEL',['Alemão','Chaira','Hassan','Moyano','De la Fuente','Paraschiv']),
-  // OSASUNA
   ...mkP('osa','POR',['S.Herrera','A.Fernández']),
   ...mkP('osa','DEF',['Catena','Boyomo','Herrando','J.Cruz','Bretones','Areso','R.Peña','N.Vidal']),
   ...mkP('osa','MED',['Torró','Moncayola','I.Muñoz','P.Ibáñez','A.Oroz','R.García','Moi Gómez']),
   ...mkP('osa','DEL',['Budimir','B.Zaragoza','R.García de Haro','K.Barja','Arnaiz']),
-  // ESPANYOL
   ...mkP('esp','POR',['Joan García','F.Pacheco']),
   ...mkP('esp','DEF',['Kumbulla','L.Cabrera','S.Gómez','Calero','C.Romero','Oliván','El Hilali']),
   ...mkP('esp','MED',['A.Král','Gragera','Lozano','Aguado','Edu Expósito']),
   ...mkP('esp','DEL',['J.Puado','Véliz','Cheddira','P.Milla','Salvi','J.Carreras','Dolan']),
-  // CELTA
   ...mkP('cel','POR',['Guaita','I.Villar']),
   ...mkP('cel','DEF',['Starfelt','Jailson','C.Domínguez','Aidoo','J.Rodríguez','Ristić','M.Alonso','Mingueza']),
   ...mkP('cel','MED',['Moriba','F.Beltrán','H.Sotelo','D.Rodríguez','Swedberg','H.Álvarez']),
   ...mkP('cel','DEL',['Aspas','B.Iglesias','Douvikas','Alfon','Bamba','P.Durán']),
-  // MALLORCA
   ...mkP('mal','POR',['D.Greif','L.Román']),
   ...mkP('mal','DEF',['Raíllo','Valjent','Copete','Mojica','T.Lato','Maffeo','M.Morey']),
   ...mkP('mal','MED',['S.Costa','Mascarell','Morlanes','S.Darder','R.Navarro','P.Torre','V.Fernández']),
   ...mkP('mal','DEL',['Muriqi','C.Larin','A.Prats','T.Asano','Chiquinho']),
-  // RAYO VALLECANO
   ...mkP('ray','POR',['A.Batalla','D.Cárdenas']),
   ...mkP('ray','DEF',['Lejeune','A.Mumin','Aridane','P.Fernández','Chavarría','A.Espino','Rațiu','Balliu']),
   ...mkP('ray','MED',['Ó.Valentín','P.Ciss','U.López','Gumbau','James Rodríguez','Ó.Trejo']),
   ...mkP('ray','DEL',['RDT','S.Camello','Nteka','Isi Palazón','J.de Frutos','Á.García','Embarba']),
-  // ALAVÉS
   ...mkP('ala','POR',['Sivera','Owono']),
   ...mkP('ala','DEF',['Abqar','Sedlar','Mouriño','A.Pica','M.Sánchez','H.Novoa','Tenaglia']),
   ...mkP('ala','MED',['A.Blanco','A.Guevara','J.Guridi','Benavídez','J.Jordán','Aleñá']),
   ...mkP('ala','DEL',['T.Martínez','K.García','C.Martín','Conechny','Rebbach','C.Vicente','L.Romero']),
-  // GETAFE
   ...mkP('get','POR',['D.Soria','Letacek']),
   ...mkP('get','DEF',['Alderete','Djené','Berrocal','D.Rico','Angileri','J.Iglesias','Nyom']),
   ...mkP('get','MED',['L.Milla','Arambarri','Y.Santiago','Aberdin','John Patrick']),
   ...mkP('get','DEL',['B.Mayoral','C.Uche','B.Yıldırım','P.Federico','A.Sancris','C.Pérez']),
 ];
 
-// Asignar precios más realistas a estrellas
-const famosos = {
+const famosos={
   'Mbappé':14.5,'Vinícius Jr':14,'Bellingham':13,'Yamal':13,'Lewandowski':12.5,
   'J.Álvarez':11,'Griezmann':10.5,'Raphinha':10,'Nico Williams':9.5,'Courtois':7,
   'Oblak':6.5,'Zubimendi':8,'De Jong':8.5,'Rodrygo':9,'Pedri':10,'Gavi':9,
@@ -387,27 +388,94 @@ const famosos = {
 };
 JUGADORES.forEach(j=>{if(famosos[j.n])j.precio=famosos[j.n];});
 
-// ═══════════════════════════════════════
+// ═══════════════════════════════════════════
 // ESTADO
-// ═══════════════════════════════════════
-const PRESUPUESTO_TOTAL = 100;
-let miEquipo = [];
-let presupuesto = PRESUPUESTO_TOTAL;
-let jornadaActual = 0;
-const TOTAL_JORNADAS = 38;
-let jornadasJugadas = new Array(TOTAL_JORNADAS).fill(false);
-let jornadaPts = new Array(TOTAL_JORNADAS).fill(0);
-let filtroPos = 'TODOS', filtroEq = 'TODOS';
+// ═══════════════════════════════════════════
+const PRESUPUESTO_TOTAL=100;
+let managerId=null, managerNombre=null;
+let miEquipo=[], presupuesto=PRESUPUESTO_TOTAL;
+let filtroPos='TODOS', filtroEq='TODOS';
+let jornadaActual=0;
+const TOTAL_JORNADAS=38;
 
-const MANAGERS_CPU = [
-  {n:'El Madridista',pts:0},{n:'CuléForever',pts:0},{n:'AtleticoHeart',pts:0},
-  {n:'ElGaditano',pts:0},{n:'ProfesorKlopp',pts:0},{n:'SevFanatik',pts:0},
-  {n:'BéticaLocura',pts:0},{n:'CeltaFan',pts:0},
-];
+// ═══════════════════════════════════════════
+// LOGIN
+// ═══════════════════════════════════════════
+async function entrar(){
+  const nombre=document.getElementById('login-nombre').value.trim();
+  if(!nombre){document.getElementById('login-error').textContent='Escribe tu nombre de manager';return;}
+  document.getElementById('login-error').textContent='';
+  try{
+    // Buscar manager existente
+    let data=await sb('managers?nombre=eq.'+encodeURIComponent(nombre)+'&select=id,nombre');
+    if(data&&data.length>0){
+      managerId=data[0].id;managerNombre=data[0].nombre;
+    } else {
+      // Crear nuevo
+      data=await sb('managers',{method:'POST',body:JSON.stringify({nombre})});
+      managerId=data[0].id;managerNombre=data[0].nombre;
+    }
+    // Cargar plantilla guardada
+    await cargarPlantilla();
+    // Cargar estado de jornadas
+    await cargarJornadas();
+    document.getElementById('app-login').style.display='none';
+    document.getElementById('app-juego').style.display='block';
+    document.getElementById('h-manager').textContent=managerNombre;
+    updateHeader();
+    renderFiltrosEq();
+    renderCromos();
+  }catch(e){
+    document.getElementById('login-error').textContent='Error al conectar. Revisa tu conexión.';
+    console.error(e);
+  }
+}
 
-// ═══════════════════════════════════════
+async function cargarPlantilla(){
+  const data=await sb('plantillas?manager_id=eq.'+managerId+'&select=jugador_id');
+  if(!data)return;
+  miEquipo=[];
+  let coste=0;
+  data.forEach(r=>{
+    const j=JUGADORES.find(p=>p.id===r.jugador_id);
+    if(j){miEquipo.push(j);coste+=j.precio;}
+  });
+  // Cargar puntos acumulados
+  const pts=await sb('puntos?manager_id=eq.'+managerId+'&select=detalle');
+  if(pts){
+    pts.forEach(jornada=>{
+      if(jornada.detalle){
+        jornada.detalle.forEach(d=>{
+          const j=JUGADORES.find(p=>p.id===d.id);
+          if(j)j.ptsAcum=(j.ptsAcum||0)+d.pts;
+        });
+      }
+    });
+  }
+  presupuesto=+(PRESUPUESTO_TOTAL-coste).toFixed(1);
+}
+
+async function cargarJornadas(){
+  const data=await sb('jornadas?select=numero,jugada,resultados&order=numero.asc');
+  if(!data)return;
+  jornadaActual=0;
+  data.forEach(j=>{
+    if(j.jugada)jornadaActual=j.numero;
+  });
+}
+
+function cerrarSesion(){
+  managerId=null;managerNombre=null;miEquipo=[];presupuesto=PRESUPUESTO_TOTAL;
+  JUGADORES.forEach(j=>{j.ptsAcum=0;j.pts=0;});
+  jornadaActual=0;
+  document.getElementById('app-juego').style.display='none';
+  document.getElementById('app-login').style.display='block';
+  document.getElementById('login-nombre').value='';
+}
+
+// ═══════════════════════════════════════════
 // NAV
-// ═══════════════════════════════════════
+// ═══════════════════════════════════════════
 function go(id){
   document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));
   document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('on'));
@@ -419,114 +487,99 @@ function go(id){
   if(id==='admin')renderAdmin();
 }
 
-// ═══════════════════════════════════════
+// ═══════════════════════════════════════════
 // CROMOS
-// ═══════════════════════════════════════
+// ═══════════════════════════════════════════
 function setFiltro(pos,btn){
   filtroPos=pos;
   document.querySelectorAll('#filtros-pos .f-btn').forEach(b=>b.classList.remove('on'));
-  btn.classList.add('on');
-  renderCromos();
+  btn.classList.add('on');renderCromos();
 }
-
 function setFiltroEq(eq,btn){
   filtroEq=eq;
   document.querySelectorAll('#filtros-eq .f-btn').forEach(b=>b.classList.remove('on'));
-  btn.classList.add('on');
-  renderCromos();
+  btn.classList.add('on');renderCromos();
 }
-
 function renderFiltrosEq(){
   const div=document.getElementById('filtros-eq');
   div.innerHTML=`<button class="f-btn on" onclick="setFiltroEq('TODOS',this)">TODOS</button>`+
     EQUIPOS.map(e=>`<button class="f-btn" onclick="setFiltroEq('${e.id}',this)">${e.n.split(' ')[0].substring(0,8)}</button>`).join('');
 }
-
 function renderCromos(){
   const q=document.getElementById('search-input').value.toLowerCase();
-  const grid=document.getElementById('cards-grid');
-  const eq=EQUIPOS.find(e=>e.id===filtroEq);
   let lista=JUGADORES.filter(j=>{
     if(filtroPos!=='TODOS'&&j.pos!==filtroPos)return false;
     if(filtroEq!=='TODOS'&&j.equipo!==filtroEq)return false;
     if(q&&!j.n.toLowerCase().includes(q))return false;
     return true;
   });
-  grid.innerHTML=lista.map(j=>{
+  document.getElementById('cards-grid').innerHTML=lista.map(j=>{
     const sel=miEquipo.some(m=>m.id===j.id);
-    const eqData=EQUIPOS.find(e=>e.id===j.equipo);
-    const puedeAnadir=puedeSeleccionar(j);
-    return `<div class="cromo${sel?' selected':''}${!sel&&!puedeAnadir?' disabled':''}" onclick="toggleJugador('${j.id}')">
-      <div class="cromo-stripe" style="background:${eqData?eqData.c:'#444'}"></div>
+    const eq=EQUIPOS.find(e=>e.id===j.equipo);
+    const puede=puedeSeleccionar(j);
+    return `<div class="cromo${sel?' selected':''}${!sel&&!puede?' disabled':''}" onclick="toggleJugador('${j.id}')">
+      <div class="cromo-stripe" style="background:${eq?eq.c:'#444'}"></div>
       <div class="cromo-check">✓</div>
-      <div class="cromo-header">
-        <span class="cromo-pos pos-${j.pos}">${j.pos}</span>
-        <span class="cromo-num">${j.precio}</span>
-      </div>
+      <div class="cromo-header"><span class="cromo-pos pos-${j.pos}">${j.pos}</span><span class="cromo-num">${j.precio}</span></div>
       <div class="cromo-body">
         <div class="cromo-name">${j.n}</div>
-        <div class="cromo-team">${eqData?eqData.n:j.equipo}</div>
+        <div class="cromo-team">${eq?eq.n:j.equipo}</div>
         <div class="cromo-price">${j.precio.toFixed(1)}<span>M€</span></div>
         ${j.ptsAcum>0?`<div class="cromo-pts">⚡ ${j.ptsAcum} pts</div>`:''}
       </div>
     </div>`;
   }).join('');
 }
-
 function puedeSeleccionar(j){
   if(miEquipo.some(m=>m.id===j.id))return true;
-  if(miEquipo.length>=15)return false;
-  if(presupuesto<j.precio)return false;
-  const cnt=miEquipo.filter(m=>m.pos===j.pos).length;
-  const maxPos={POR:2,DEF:5,MED:5,DEL:3};
-  if(cnt>=maxPos[j.pos])return false;
-  return true;
+  if(miEquipo.length>=15||presupuesto<j.precio)return false;
+  const max={POR:2,DEF:5,MED:5,DEL:3};
+  return miEquipo.filter(m=>m.pos===j.pos).length<max[j.pos];
 }
 
-function toggleJugador(id){
-  const j=JUGADORES.find(p=>p.id===id);
-  if(!j)return;
+async function toggleJugador(id){
+  const j=JUGADORES.find(p=>p.id===id);if(!j)return;
   const idx=miEquipo.findIndex(m=>m.id===id);
   if(idx>=0){
     miEquipo.splice(idx,1);
     presupuesto=+(presupuesto+j.precio).toFixed(1);
-    toast(`${j.n} eliminado`);
+    await sb('plantillas?manager_id=eq.'+managerId+'&jugador_id=eq.'+id,{method:'DELETE',headers:{'Prefer':''}});
+    toast(j.n+' eliminado');
   } else {
     if(!puedeSeleccionar(j)){
       if(presupuesto<j.precio)toast('Presupuesto insuficiente');
-      else if(miEquipo.length>=15)toast('Plantilla completa (15/15)');
+      else if(miEquipo.length>=15)toast('Plantilla completa');
       else toast('Límite de posición alcanzado');
       return;
     }
     miEquipo.push(j);
     presupuesto=+(presupuesto-j.precio).toFixed(1);
-    toast(`${j.n} añadido ✓`);
+    await sb('plantillas',{method:'POST',body:JSON.stringify({manager_id:managerId,jugador_id:id})});
+    toast(j.n+' añadido ✓');
   }
-  updateHeader();
-  renderCromos();
+  updateHeader();renderCromos();
 }
 
-// ═══════════════════════════════════════
+// ═══════════════════════════════════════════
 // CAMPO
-// ═══════════════════════════════════════
+// ═══════════════════════════════════════════
 function renderCampo(){
-  const campo=document.getElementById('campo');
   const pos=['DEL','MED','DEF','POR'];
-  const maxPos={POR:2,DEF:5,MED:5,DEL:3};
+  const max={POR:2,DEF:5,MED:5,DEL:3};
   const labels={DEL:'DELANTERA',MED:'MEDIOCAMPO',DEF:'DEFENSA',POR:'PORTERÍA'};
-  campo.innerHTML=pos.map(p=>{
+  document.getElementById('campo').innerHTML=pos.map(p=>{
     const jugs=miEquipo.filter(j=>j.pos===p);
-    const vacios=maxPos[p]-jugs.length;
-    const slots=jugs.map(j=>`
-      <div class="slot-campo lleno" onclick="quitarDelCampo('${j.id}')">
-        <span class="sc-name">${j.n}</span>
-        <span class="sc-pts">${j.ptsAcum}</span>
-        <span class="sc-team">${EQUIPOS.find(e=>e.id===j.equipo)?.n.split(' ')[0]||''}</span>
-      </div>`).join('');
-    const empty=Array(vacios).fill(`<div class="slot-campo"><span class="slot-vacio-txt">${p}<br>—</span></div>`).join('');
+    const vacios=max[p]-jugs.length;
     return `<div class="linea-pos">
       <div class="linea-label">${labels[p]}</div>
-      <div class="linea-slots">${slots}${empty}</div>
+      <div class="linea-slots">
+        ${jugs.map(j=>`<div class="slot-campo lleno" onclick="quitarDelCampo('${j.id}')">
+          <span class="sc-name">${j.n}</span>
+          <span class="sc-pts">${j.ptsAcum}</span>
+          <span class="sc-team">${EQUIPOS.find(e=>e.id===j.equipo)?.n.split(' ')[0]||''}</span>
+        </div>`).join('')}
+        ${Array(vacios).fill(`<div class="slot-campo"><span class="slot-vacio-txt">${p}<br>—</span></div>`).join('')}
+      </div>
     </div>`;
   }).join('');
   const tot=miEquipo.reduce((a,j)=>a+j.ptsAcum,0);
@@ -535,154 +588,167 @@ function renderCampo(){
   document.getElementById('eq-pts').textContent=tot+' pts';
 }
 
-function quitarDelCampo(id){
-  const j=JUGADORES.find(p=>p.id===id);
-  if(!j)return;
+async function quitarDelCampo(id){
+  const j=JUGADORES.find(p=>p.id===id);if(!j)return;
   miEquipo=miEquipo.filter(m=>m.id!==id);
   presupuesto=+(presupuesto+j.precio).toFixed(1);
-  updateHeader();
-  renderCampo();
-  toast(`${j.n} eliminado`);
+  await sb('plantillas?manager_id=eq.'+managerId+'&jugador_id=eq.'+id,{method:'DELETE',headers:{'Prefer':''}});
+  updateHeader();renderCampo();toast(j.n+' eliminado');
 }
 
-// ═══════════════════════════════════════
+// ═══════════════════════════════════════════
 // CLASIFICACIÓN
-// ═══════════════════════════════════════
-function renderClasificacion(){
-  const misPts=miEquipo.reduce((a,j)=>a+j.ptsAcum,0);
-  const liga=[{n:'Tú',equipo:'Mi Equipo',pts:misPts,mine:true},...MANAGERS_CPU];
-  liga.sort((a,b)=>b.pts-a.pts);
-  document.getElementById('ranking').innerHTML=liga.map((m,i)=>{
-    const cls=['p1','p2','p3'][i]||'';
-    return `<div class="rank-row${m.mine?' mine':''}">
-      <div class="rank-pos ${cls}">${i+1}</div>
-      <div><div class="rank-name">${m.n}</div><div class="rank-team">${m.equipo||''}</div></div>
-      <div class="rank-pts">${m.pts}<span> pts</span></div>
-    </div>`;
-  }).join('');
+// ═══════════════════════════════════════════
+async function renderClasificacion(){
+  document.getElementById('ranking-wrap').innerHTML='<div class="loading"><div class="spinner"></div>Cargando clasificación...</div>';
+  try{
+    const managers=await sb('managers?select=id,nombre');
+    const ptsData=await sb('puntos?select=manager_id,puntos');
+    const totales={};
+    if(ptsData)ptsData.forEach(r=>{totales[r.manager_id]=(totales[r.manager_id]||0)+r.puntos;});
+    const liga=managers.map(m=>({id:m.id,n:m.nombre,pts:totales[m.id]||0,mine:m.id===managerId}));
+    liga.sort((a,b)=>b.pts-a.pts);
+    document.getElementById('ranking-wrap').innerHTML='<div class="ranking-list">'+
+      liga.map((m,i)=>{
+        const cls=['p1','p2','p3'][i]||'';
+        return `<div class="rank-row${m.mine?' mine':''}">
+          <div class="rank-pos ${cls}">${i+1}</div>
+          <div><div class="rank-name">${m.n}${m.mine?' 👈':''}</div></div>
+          <div class="rank-pts">${m.pts}<span> pts</span></div>
+        </div>`;
+      }).join('')+'</div>';
+  }catch(e){document.getElementById('ranking-wrap').innerHTML='<div class="loading">Error al cargar</div>';}
 }
 
-// ═══════════════════════════════════════
+// ═══════════════════════════════════════════
 // ADMIN
-// ═══════════════════════════════════════
-function renderAdmin(){
+// ═══════════════════════════════════════════
+async function renderAdmin(){
+  const data=await sb('jornadas?select=numero,jugada,resultados&order=numero.asc');
+  const jugadas=new Set(data?data.filter(j=>j.jugada).map(j=>j.numero):[]);
+  jornadaActual=jugadas.size;
   const grid=document.getElementById('jornadas-grid');
   grid.innerHTML=Array.from({length:TOTAL_JORNADAS},(_,i)=>{
     const n=i+1;
-    const cls=jornadasJugadas[i]?'jugada':i===jornadaActual?'activa':'';
-    return `<div class="jornada-btn ${cls}">${jornadasJugadas[i]?'✓ ':''} J${n}${jornadasJugadas[i]?' ('+jornadaPts[i]+'pts)':''}</div>`;
+    const jugada=jugadas.has(n);
+    const siguiente=n===jornadaActual+1;
+    return `<div class="jornada-btn ${jugada?'jugada':siguiente?'siguiente':''}">${jugada?'✓ ':''}J${n}</div>`;
   }).join('');
   const btn=document.getElementById('btn-simular');
   btn.disabled=jornadaActual>=TOTAL_JORNADAS;
   btn.textContent=jornadaActual>=TOTAL_JORNADAS?'TEMPORADA COMPLETADA':'▶ SIMULAR JORNADA '+(jornadaActual+1);
+
+  // Mostrar últimos resultados
+  if(data&&data.length>0){
+    const ultima=data[data.length-1];
+    if(ultima&&ultima.resultados){
+      document.getElementById('panel-resultados').style.display='block';
+      document.getElementById('jornada-label').textContent=ultima.numero;
+      document.getElementById('resultados-div').innerHTML=ultima.resultados.map(r=>
+        `<div class="resultado-match">
+          <span class="team-name-match home">${r.home}</span>
+          <span class="score-box">${r.gh}–${r.ga}</span>
+          <span class="team-name-match">${r.away}</span>
+        </div>`).join('');
+    }
+  }
 }
 
-const PARTIDOS_BASE=[
-  ['rm','fcb'],['atm','vil'],['ath','rso'],['bet','sev'],['gir','val'],
-  ['lev','elc'],['ovi','osa'],['esp','cel'],['mal','ray'],['ala','get'],
-];
+function rnd(a,b){return Math.floor(Math.random()*(b-a+1))+a;}
 
-function rnd(min,max){return Math.floor(Math.random()*(max-min+1))+min;}
+async function simularJornada(){
+  const btn=document.getElementById('btn-simular');
+  btn.disabled=true;btn.textContent='Simulando...';
+  const numJornada=jornadaActual+1;
+  if(numJornada>TOTAL_JORNADAS)return;
 
-function puntosPorRendimiento(j,goles,asistencias,esPortero,ganó,golesRecibidos){
-  let pts=2;
-  if(esPortero){pts+=goles*6;if(golesRecibidos===0)pts+=4;else pts-=golesRecibidos;}
-  else{pts+=goles*(j.pos==='DEL'?5:j.pos==='MED'?6:7);pts+=asistencias*3;}
-  if(ganó)pts+=3;
-  if(Math.random()<0.05)pts-=3; // tarjeta roja
-  else if(Math.random()<0.15)pts-=1; // amarilla
-  return Math.max(0,pts);
-}
-
-function simularJornada(){
-  if(jornadaActual>=TOTAL_JORNADAS)return;
-  const j=jornadaActual;
-  jornadaActual++;
-
-  // Simular partidos
+  // Generar partidos
+  const offset=(numJornada-1)*3;
   const resultados=[];
   const eqPts={};
   EQUIPOS.forEach(e=>eqPts[e.id]=0);
-
-  // Generar 10 partidos por jornada rotando
-  const offset=j*3;
   for(let i=0;i<10;i++){
     const home=EQUIPOS[(i*2+offset)%20];
     const away=EQUIPOS[(i*2+1+offset)%20];
     const gh=rnd(0,4),ga=rnd(0,3);
     resultados.push({home:home.n,away:away.n,gh,ga});
-    if(gh>ga){eqPts[home.id]=1;eqPts[away.id]=0;}
-    else if(ga>gh){eqPts[home.id]=0;eqPts[away.id]=1;}
-    else{eqPts[home.id]=0.5;eqPts[away.id]=0.5;}
+    eqPts[home.id]=gh>ga?1:gh===ga?0.5:0;
+    eqPts[away.id]=ga>gh?1:gh===ga?0.5:0;
   }
 
-  // Calcular puntos de mis jugadores
-  let ptsJornada=0;
-  const detalle=[];
-  miEquipo.forEach(p=>{
-    const esPor=p.pos==='POR';
-    const goles=esPor?0:rnd(0,p.pos==='DEL'?2:p.pos==='MED'?1:0);
-    const asis=esPor?0:rnd(0,1);
-    const gr=esPor?rnd(0,3):0;
-    const ganó=(eqPts[p.equipo]||0)>=1;
-    const pj=puntosPorRendimiento(p,goles,asis,esPor,ganó,gr);
-    p.pts=pj;p.ptsAcum+=pj;ptsJornada+=pj;
-    detalle.push({...p,pj});
-  });
+  // Guardar jornada en Supabase
+  await sb('jornadas',{method:'POST',body:JSON.stringify({numero:numJornada,jugada:true,resultados,jugada_en:new Date().toISOString()})});
 
-  // CPU managers
-  MANAGERS_CPU.forEach(m=>{m.pts+=rnd(20,120);});
+  // Calcular puntos para TODOS los managers
+  const managers=await sb('managers?select=id');
+  const allPlantillas=await sb('plantillas?select=manager_id,jugador_id');
 
-  jornadasJugadas[j]=true;
-  jornadaPts[j]=ptsJornada;
+  for(const m of managers){
+    const ids=(allPlantillas||[]).filter(p=>p.manager_id===m.id).map(p=>p.jugador_id);
+    let total=0;
+    const detalle=[];
+    ids.forEach(jid=>{
+      const j=JUGADORES.find(p=>p.id===jid);if(!j)return;
+      const esPor=j.pos==='POR';
+      const goles=esPor?0:rnd(0,j.pos==='DEL'?2:j.pos==='MED'?1:0);
+      const asis=esPor?0:rnd(0,1);
+      const gr=esPor?rnd(0,3):0;
+      const ganó=(eqPts[j.equipo]||0)>=1;
+      let pts=2+(esPor?(goles*6+(gr===0?4:-gr)):(goles*(j.pos==='DEL'?5:j.pos==='MED'?6:7)+asis*3))+(ganó?3:0);
+      if(Math.random()<0.05)pts-=3;else if(Math.random()<0.15)pts-=1;
+      pts=Math.max(0,pts);
+      total+=pts;
+      detalle.push({id:jid,pts});
+      if(m.id===managerId){
+        const jl=JUGADORES.find(p=>p.id===jid);
+        if(jl){jl.pts=pts;jl.ptsAcum=(jl.ptsAcum||0)+pts;}
+      }
+    });
+    await sb('puntos',{method:'POST',body:JSON.stringify({manager_id:m.id,jornada:numJornada,puntos:total,detalle})});
+  }
 
-  // Mostrar modal
-  const modal=document.getElementById('modal-jornada');
-  document.getElementById('modal-titulo').textContent=`JORNADA ${j+1} — RESULTADOS`;
-  const bodyHTML=`
-    <div style="margin-bottom:10px">
+  jornadaActual=numJornada;
+  updateHeader();
+
+  // Modal con resultados del jugador
+  const misPts=miEquipo.reduce((a,j)=>a+(j.pts||0),0);
+  document.getElementById('modal-titulo').textContent=`JORNADA ${numJornada} — RESULTADOS`;
+  document.getElementById('modal-body').innerHTML=
+    `<div style="margin-bottom:10px">
       <div style="font-size:11px;color:var(--muted);letter-spacing:1px;margin-bottom:6px">PARTIDOS</div>
-      ${resultados.map(r=>`
-        <div class="resultado-match">
-          <span class="team-name-match home">${r.home}</span>
-          <span class="score-box">${r.gh}–${r.ga}</span>
-          <span class="team-name-match">${r.away}</span>
-        </div>`).join('')}
+      ${resultados.map(r=>`<div class="resultado-match">
+        <span class="team-name-match home">${r.home}</span>
+        <span class="score-box">${r.gh}–${r.ga}</span>
+        <span class="team-name-match">${r.away}</span>
+      </div>`).join('')}
     </div>
     <div style="font-size:11px;color:var(--muted);letter-spacing:1px;margin:10px 0 6px">MIS JUGADORES</div>
-    ${detalle.length===0?'<p style="color:var(--muted);font-size:12px;text-align:center">No tienes jugadores en tu equipo</p>':
-      detalle.sort((a,b)=>b.pj-a.pj).map(p=>`
+    ${miEquipo.length===0?'<p style="color:var(--muted);font-size:12px;text-align:center">No tienes jugadores</p>':
+      [...miEquipo].sort((a,b)=>(b.pts||0)-(a.pts||0)).map(j=>`
         <div class="puntos-row">
-          <div><div class="puntos-nombre">${p.n}</div><div class="puntos-equipo">${EQUIPOS.find(e=>e.id===p.equipo)?.n||''} · ${p.pos}</div></div>
-          <div class="puntos-val">${p.pj}</div>
+          <div><div class="puntos-nombre">${j.n}</div><div class="puntos-equipo">${EQUIPOS.find(e=>e.id===j.equipo)?.n||''} · ${j.pos}</div></div>
+          <div class="puntos-val">${j.pts||0}</div>
         </div>`).join('')}`;
-  document.getElementById('modal-body').innerHTML=bodyHTML;
-  document.getElementById('modal-total').innerHTML=`⚡ ${ptsJornada} puntos esta jornada`;
-  modal.classList.add('on');
-  updateHeader();
+  document.getElementById('modal-total').textContent=`⚡ ${misPts} puntos esta jornada`;
+  document.getElementById('modal-jornada').classList.add('on');
   renderAdmin();
-  toast(`Jornada ${j+1} simulada — ${ptsJornada} pts`);
+  toast(`Jornada ${numJornada} simulada`);
 }
 
-// ═══════════════════════════════════════
-// UTILIDADES
-// ═══════════════════════════════════════
+// ═══════════════════════════════════════════
+// UTILS
+// ═══════════════════════════════════════════
 function updateHeader(){
-  const tot=miEquipo.reduce((a,j)=>a+j.ptsAcum,0);
+  const tot=miEquipo.reduce((a,j)=>a+(j.ptsAcum||0),0);
   document.getElementById('h-budget').textContent=presupuesto.toFixed(1);
   document.getElementById('h-squad').textContent=miEquipo.length;
   document.getElementById('h-pts').textContent=tot;
 }
-
 function toast(msg){
   const t=document.getElementById('toast');
   t.textContent=msg;t.style.display='block';
-  clearTimeout(t._t);t._t=setTimeout(()=>t.style.display='none',2200);
+  clearTimeout(t._t);t._t=setTimeout(()=>t.style.display='none',2500);
 }
-
-// INIT
-renderFiltrosEq();
-renderCromos();
 </script>
 </body>
 </html>
